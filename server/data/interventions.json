@@ -1,0 +1,47 @@
+{
+  "DEPLOY_REMEDIATION_DECK": {
+    "title": "10-Min Sign Rules Remediation Deck",
+    "kind": "deck",
+    "content": {
+      "slides": [
+        { "n": 1, "title": "Up is positive → gravity is negative", "points": ["Pick +/− once and never switch mid-problem", "Up = + means every downward vector gets a minus sign"] },
+        { "n": 2, "title": "Worked example with signs", "points": ["Ball tossed up at 20 m/s: s = 20·3 + ½·(−9.8)·9 = 15.9 m", "Watch the minus sign ride along on every g term"] },
+        { "n": 3, "title": "Three common traps", "points": ["+g in an up-positive frame", "Dropping the ½at² term", "Squaring t wrong (3² = 9, not 6)"] },
+        { "n": 4, "title": "Quick check (3 Qs)", "points": ["Drone-drop sign check", "Peak-velocity checkpoint", "Exit-velocity sign drill"] },
+        { "n": 5, "title": "Exit ticket", "points": ["One signed free-fall computation", "Self-rate: can you spot +g vs −g?"] }
+      ]
+    }
+  },
+  "CREATE_GROUP_ASSIGNMENT": {
+    "title": "Sign-Conventions Group Assignment",
+    "kind": "assignment",
+    "content": {
+      "summary": "Small-group worksheet: 4 signed-motion problems with peer sign-check protocol.",
+      "items": ["Pairs solve with opposite sign conventions, then reconcile", "Each group presents one trap they caught"]
+    }
+  },
+  "SEND_PRACTICE_DRILL": {
+    "title": "Rest-State Practice Drill",
+    "kind": "drill",
+    "content": {
+      "summary": "Five 'dropped / at peak / comes to rest' translation items (u = 0 or v = 0).",
+      "items": ["Underline the word that sets u or v", "Write the boundary condition before any equation"]
+    }
+  },
+  "ASSIGN_VECTOR_MODULE": {
+    "title": "Vector Foundations Module",
+    "kind": "module",
+    "content": {
+      "summary": "Remediation module: components, sin vs cos, treating axes independently.",
+      "items": ["vx = v cosθ, vy = v sinθ", "90° edge cases", "Scalar-vs-vector sorting task"]
+    }
+  },
+  "ASSIGN_EXTENSION": {
+    "title": "Calculus Physics Extension",
+    "kind": "extension",
+    "content": {
+      "summary": "Extension path for acceleration candidates: integrals, drag, telemetry.",
+      "items": ["Differential kinematics via integrals", "Aerodynamic drag & terminal velocity", "F1 braking-point telemetry challenge"]
+    }
+  }
+}
