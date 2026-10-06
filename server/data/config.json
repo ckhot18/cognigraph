@@ -1,0 +1,10 @@
+{
+  "escalation_threshold": 3,
+  "acceleration_score": 85,
+  "acceleration_avg_seconds": 45,
+  "numeric_tolerance": 0.05,
+  "matrix_green": 0.8,
+  "matrix_yellow": 0.55,
+  "max_working_text_chars": 2000,
+  "demo_delay_ms": 750
+}
