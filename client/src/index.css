@@ -2,42 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CogniGraph AI motion language (spec 7.1). */
+/* CogniGraph AI V2 design tokens: warm light student portal, calm slate teacher portal. */
 
-@keyframes pulse-red {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55); }
-  50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+:root {
+  --bg: #faf8f5;
+  --card: #ffffff;
+  --ink: #1c1917;
+  --muted: #78716c;
+  --line: #e7e2da;
+  --accent: #1c1917;
+  --bridge: #f59e0b;
+  --bridge-soft: #fef3c7;
+  --build: #0284c7;
+  --build-soft: #e0f2fe;
+  --strong: #059669;
+  --strong-soft: #d1fae5;
+  --stretch: #b45309;
 }
 
-@keyframes glow-gold {
-  0%, 100% { box-shadow: 0 0 12px 0 rgba(251, 191, 36, 0.45); }
-  50% { box-shadow: 0 0 26px 4px rgba(251, 191, 36, 0.65); }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-tabular { font-variant-numeric: tabular-nums; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes trace-dash {
-  to { stroke-dashoffset: 0; }
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
 }
-
+@keyframes confetti-fall {
+  0% { opacity: 1; transform: translateY(-6px) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(46px) rotate(220deg); }
+}
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.45); }
+  50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}
 @keyframes shake-x {
   0%, 100% { transform: translateX(0); }
   20%, 60% { transform: translateX(-6px); }
   40%, 80% { transform: translateX(6px); }
 }
 
-@keyframes confetti-fall {
-  0% { opacity: 1; transform: translateY(-6px) rotate(0deg); }
-  100% { opacity: 0; transform: translateY(46px) rotate(220deg); }
+.animate-fade-up { animation: fade-up 0.4s ease-out both; }
+.animate-pulse-amber { animation: pulse-amber 1.8s ease-in-out infinite; }
+.animate-shake { animation: shake-x 0.4s ease-in-out; }
+
+.skeleton {
+  background: linear-gradient(90deg, #eee9e1 25%, #f7f3ec 50%, #eee9e1 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.3s linear infinite;
 }
 
-.animate-pulse-red { animation: pulse-red 1.6s ease-in-out infinite; }
-.animate-glow-gold { animation: glow-gold 2.2s ease-in-out infinite; }
-.animate-fade-up { animation: fade-up 0.45s ease-out both; }
-.animate-shake { animation: shake-x 0.4s ease-in-out; }
 .confetti-bit {
   position: absolute;
   top: -4px;
@@ -48,18 +77,12 @@
   pointer-events: none;
 }
 
-.edge-trace {
-  stroke-dasharray: 8 6;
-  stroke-dashoffset: 56;
-  animation: trace-dash 0.8s ease-out forwards;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-pulse-red,
-  .animate-glow-gold,
-  .animate-fade-up,
-  .animate-shake,
-  .edge-trace {
+  .animate-fade-up, .animate-pulse-amber, .animate-shake, .confetti-bit, .skeleton {
     animation: none;
   }
+}
+
+@media print {
+  .no-print { display: none !important; }
 }

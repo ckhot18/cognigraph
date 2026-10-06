@@ -1,68 +1,99 @@
-import { useState } from 'react';
-import StudentHub from './student/StudentHub.jsx';
-import TeacherCenter from './teacher/TeacherCenter.jsx';
-import ErrorBoundary from './ErrorBoundary.jsx';
+import { useCallback, useEffect, useState } from 'react';
+import { store } from './api.js';
+import { ErrorBoundary } from './components/ui.jsx';
+import Landing from './landing/Landing.jsx';
+import Login from './auth/Login.jsx';
+import StudentHome from './student/Home.jsx';
+import StudentTest from './student/TestPage.jsx';
+import Practice from './student/Practice.jsx';
+import Learn from './student/Learn.jsx';
+import TeacherOverview from './teacher/Overview.jsx';
+import TeacherTest from './teacher/TestAnalytics.jsx';
+import TeacherRoster from './teacher/Roster.jsx';
+import TeacherStudent from './teacher/DrillDown.jsx';
+import LecturePlanner from './teacher/LecturePlanner.jsx';
 
-// App shell: mode switcher between Student Hub (Phase 4) and Teacher Center (Phase 5).
-const MODES = [
-  { id: 'student', label: 'Student Diagnostic Hub' },
-  { id: 'teacher', label: 'Teacher Command Center' },
-];
+function parseHash() {
+  const h = window.location.hash.replace(/^#/, '') || '/';
+  const [_, ...parts] = h.split('/');
+  return { path: '/' + parts.join('/'), parts };
+}
+
+function useRoute() {
+  const [route, setRoute] = useState(parseHash);
+  useEffect(() => {
+    const onChange = () => setRoute(parseHash());
+    window.addEventListener('hashchange', onChange);
+    return () => window.removeEventListener('hashchange', onChange);
+  }, []);
+  return route;
+}
+
+export function go(path) {
+  window.location.hash = '#' + path;
+}
 
 export default function App() {
-  const [mode, setMode] = useState('student');
-  const [studentPreset, setStudentPreset] = useState('case1');
+  const route = useRoute();
+  const [user, setUser] = useState(store.user);
+  const authed = !!store.token && !!user;
 
-  const openStudent = (presetId) => {
-    setStudentPreset(presetId);
-    setMode('student');
+  const logout = useCallback(async () => {
+    try {
+      const { api } = await import('./api.js');
+      await api.logout();
+    } catch {
+      store.token = null;
+      store.user = null;
+    }
+    setUser(null);
+    go('/');
+  }, []);
+
+  const onLogin = useCallback((u) => {
+    setUser(u);
+    go(u.role === 'teacher' ? '/teacher' : '/student');
+  }, []);
+
+  const guard = (role, el) => {
+    if (!authed) {
+      go('/login');
+      return null;
+    }
+    if (user.role !== role) {
+      go(user.role === 'teacher' ? '/teacher' : '/student');
+      return null;
+    }
+    return el;
   };
 
+  const [p1, p2, p3] = route.parts;
+  let page = null;
+  if (route.path === '/') page = <Landing />;
+  else if (route.path === '/login') page = authed ? null : <Login onLogin={onLogin} />;
+  else if (p1 === 'student') {
+    if (!p2) page = guard('student', <StudentHome user={user} onLogout={logout} />);
+    else if (p2 === 'tests' && p3) page = guard('student', <StudentTest testId={p3} />);
+    else if (p2 === 'practice' && p3) page = guard('student', <Practice sessionId={p3} />);
+    else if (p2 === 'learn' && p3) page = guard('student', <Learn conceptId={p3} />);
+  } else if (p1 === 'teacher') {
+    if (!p2) page = guard('teacher', <TeacherOverview user={user} onLogout={logout} />);
+    else if (p2 === 'tests' && p3) page = guard('teacher', <TeacherTest testId={p3} />);
+    else if (p2 === 'students' && !p3) page = guard('teacher', <TeacherRoster />);
+    else if (p2 === 'students' && p3) page = guard('teacher', <TeacherStudent studentId={p3} />);
+    else if (p2 === 'lecture-planner') page = guard('teacher', <LecturePlanner />);
+  }
+  if (route.path === '/login' && authed) {
+    go(user.role === 'teacher' ? '/teacher' : '/student');
+    page = null;
+  }
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:rounded focus:bg-indigo-500 focus:px-3 focus:py-1 focus:text-white">
+    <div className="min-h-screen">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:rounded focus:bg-stone-900 focus:px-3 focus:py-1 focus:text-white">
         Skip to content
       </a>
-      <header className="border-b border-slate-800">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-4">
-          <div>
-            <p className="text-lg font-semibold tracking-tight">
-              CogniGraph <span className="text-indigo-400">AI</span>
-            </p>
-            <p className="text-xs text-slate-400">
-              Deterministic misconception diagnostics · synthetic demo data
-            </p>
-          </div>
-          <nav className="ml-auto flex gap-2" aria-label="Mode">
-            {MODES.map((m) => (
-              <button
-                key={m.id}
-                type="button"
-                onClick={() => setMode(m.id)}
-                aria-pressed={mode === m.id}
-                className={`rounded-lg border px-3 py-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 ${
-                  mode === m.id
-                    ? 'border-indigo-400 bg-indigo-500/20 text-white'
-                    : 'border-slate-800 bg-slate-900/70 text-slate-300 hover:border-slate-700'
-                }`}
-              >
-                {m.label}
-              </button>
-            ))}
-          </nav>
-        </div>
-      </header>
-      <main id="main" className="mx-auto max-w-6xl px-4 py-8">
-        {mode === 'student' ? (
-          <ErrorBoundary name="the Student Hub">
-            <StudentHub key={studentPreset} initialPresetId={studentPreset} onExternalPreset={setStudentPreset} />
-          </ErrorBoundary>
-        ) : (
-          <ErrorBoundary name="the Teacher Center">
-            <TeacherCenter onOpenStudent={openStudent} />
-          </ErrorBoundary>
-        )}
-      </main>
+      <ErrorBoundary>{page ?? <Landing />}</ErrorBoundary>
     </div>
   );
 }
