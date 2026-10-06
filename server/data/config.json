@@ -10,7 +10,9 @@
 
   "slip_weight": 0.5,
   "trend_min_tests": 4,
-  "trend_slope_pp": 4,
+  "trend_slope_pp": 1.2,
+  "trend_primary_slope": 1.6,
+  "calc_min_wrong": 6,
 
   "seg_accelerate_overall": 85,
   "seg_accelerate_max_tag": 2,
@@ -26,6 +28,8 @@
   "seg_sign_topics": 2,
   "seg_implicit_count": 3,
   "seg_lag_score": 55,
+  "seg_lag_cut": 50,
+  "seg_lag_gap": 25,
   "seg_lag_others": 70,
 
   "time_fast": 0.4,

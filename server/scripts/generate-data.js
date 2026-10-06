@@ -41,9 +41,9 @@ const ROSTER = [
   [16, 'Riya Chavan', 'lag_elec', null, { formula_misapplication: 4, unit_conversion: 4 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:current_electricity'],
   [17, 'Neil DSouza', 'lag_elec', null, { formula_misapplication: 4, unit_conversion: 4 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:current_electricity'],
   [18, 'Tanvi Shinde', 'lag_elec', null, { formula_misapplication: 4, unit_conversion: 4 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:current_electricity'],
-  [19, 'Om Kamble', 'lag_thm', null, { sign_convention: 2 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:thermodynamics'],
-  [20, 'Sana Sheikh', 'lag_thm', null, { sign_convention: 2 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:thermodynamics'],
-  [21, 'Harsh Gupta', 'lag_thm', null, { sign_convention: 2 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:thermodynamics'],
+  [19, 'Om Kamble', 'lag_thm', null, null, 1.0, 0.3, 0.08, 'TOPIC_LAG:thermodynamics'],
+  [20, 'Sana Sheikh', 'lag_thm', null, null, 1.0, 0.3, 0.08, 'TOPIC_LAG:thermodynamics'],
+  [21, 'Harsh Gupta', 'lag_thm', null, null, 1.0, 0.3, 0.08, 'TOPIC_LAG:thermodynamics'],
   [22, 'Pooja Bhosale', 'lag_opt', null, { formula_misapplication: 4 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:optics'],
   [23, 'Dev Malhotra', 'lag_opt', null, { formula_misapplication: 4 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:optics'],
   [24, 'Aisha Khan', 'lag_opt', null, { formula_misapplication: 4 }, 1.0, 0.3, 0.08, 'TOPIC_LAG:optics'],
@@ -57,7 +57,7 @@ const ROSTER = [
 
 function baseFor(arch, topic, testIdx, nTests) {
   switch (arch) {
-    case 'topper': return 0.95;
+    case 'topper': return 0.98;
     case 'struggling': return 0.27;
     case 'sign': return 0.75;
     case 'calc': return 0.8;
@@ -65,8 +65,8 @@ function baseFor(arch, topic, testIdx, nTests) {
     case 'lag_elec': return topic === 'current_electricity' ? 0.30 : 0.84;
     case 'lag_thm': return topic === 'thermodynamics' ? 0.30 : 0.84;
     case 'lag_opt': return topic === 'optics' ? 0.30 : 0.84;
-    case 'improving': return 0.58 + (0.9 - 0.58) * (testIdx / (nTests - 1));
-    case 'declining': return 0.88 - (0.88 - 0.55) * (testIdx / (nTests - 1));
+    case 'improving': return 0.62 + (0.9 - 0.62) * (testIdx / (nTests - 1));
+    case 'declining': return 0.86 - (0.86 - 0.63) * (testIdx / (nTests - 1));
     case 'guesser': return 0.25;
     default: return 0.7;
   }
