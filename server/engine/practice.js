@@ -23,12 +23,40 @@ function candidates(db, session, answeredGlobal) {
   });
 }
 
-/** Start: first L1 item (prefetched, no answer). */
-export function startPractice(db, studentId, focus = {}, answeredGlobal = new Set()) {
+/**
+ * Custom targeting from test results: score items by overlap with the student's
+ * actual misses — same concept as failed questions, top tags, weakest topics —
+ * with level fit to concept mastery. Higher score first (stable order).
+ */
+export function scorePractice(db, pool, session, context = {}) {
+  const failedConcepts = new Set(context.failedConcepts ?? []);
+  const topTags = context.topTags ?? [];
+  const weakTopics = new Set(context.weakTopics ?? []);
+  const masteryMap = context.masteryMap ?? {};
+  const scored = pool.map((q, idx) => {
+    let s = 0;
+    if (failedConcepts.has(q.concept_id)) s += 3;
+    const qtags = Object.values(q.payloads).map((pl) => pl.tag);
+    if (qtags.some((t) => topTags.includes(t))) s += 2;
+    if (weakTopics.has(q.topic_id)) s += 2;
+    if (session.focusConcept && q.concept_id === session.focusConcept) s += 2;
+    if (session.focusTag && qtags.includes(session.focusTag)) s += 2;
+    const m = masteryMap[q.concept_id]?.mastery ?? 0.5;
+    const want = m < 0.55 ? 'L1' : m < 0.75 ? 'L2' : 'L3';
+    if (q.practice_level === want) s += 1;
+    return { q, s, idx };
+  });
+  scored.sort((a, b) => b.s - a.s || a.idx - b.idx);
+  return scored.map((x) => x.q);
+}
+
+/** Start: first L1 item (prefetched, no answer). Context customizes targeting. */
+export function startPractice(db, studentId, focus = {}, answeredGlobal = new Set(), context = {}) {
   const session = {
     student_id: studentId,
     focusTag: focus.tag ?? null,
     focusConcept: focus.conceptId ?? null,
+    context,
     level: 'L1', streak: 0, answered: [], attempts: {}, done: false,
   };
   const item = nextItem(db, session, answeredGlobal);
@@ -43,8 +71,9 @@ export function nextItem(db, session, answeredGlobal = new Set()) {
     session.done = true;
     return null;
   }
-  const atLevel = pool.filter((q) => q.practice_level === session.level);
-  const pick = (atLevel.length > 0 ? atLevel : pool)[0];
+  const ranked = scorePractice(db, pool, session, session.context ?? {});
+  const atLevel = ranked.filter((q) => q.practice_level === session.level);
+  const pick = (atLevel.length > 0 ? atLevel : ranked)[0];
   return publicItem(pick);
 }
 

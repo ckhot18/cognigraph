@@ -1,6 +1,6 @@
 // Per-student profile / EDA (V2 §6.3).
 import { conceptMastery, studentNodeStates } from './mastery.js';
-import { tagTable } from './tagStats.js';
+import { tagTable, redirectRoots } from './tagStats.js';
 
 /** OLS slope (percentage points per test) over chronological scores. */
 export function olsSlope(points) {
@@ -70,13 +70,24 @@ export function studentProfile(db, studentId, overlay = {}) {
   const masteryMap = conceptMastery(responses, db.questions, overlay.practice ?? {}, cfg);
   const tags = tagTable(db, studentId);
   const systemicRoots = [];
+  const blockedRoots = [];
+  const seenRoots = new Set();
   for (const t of tags) {
     if (t.severity === 'SYSTEMIC_MISCONCEPTION' && (db.pack.tags[t.tag]?.escalates ?? false)) {
       systemicRoots.push(t.tag);
+      for (const { root } of redirectRoots(db, studentId, t.tag)) {
+        if (!seenRoots.has(root)) {
+          seenRoots.add(root);
+          blockedRoots.push(root);
+        }
+      }
     }
   }
+  // acceleration unlocks the stretch tier instead of blocking
+  const acceleration = overall >= (cfg.acceleration_score ?? 85) && systemicRoots.length === 0;
   const node_states = studentNodeStates(db, masteryMap, {
-    blockedRoots: [], acceleration: false,
+    blockedRoots,
+    acceleration,
     warningConcepts: new Set(tags.slice(0, 3).map((t) => {
       const hit = (db.byStudent.get(studentId) ?? []).find((r) => !r.is_correct && db.questions.get(r.question_id)?.payloads[r.chosen_option_id]?.tag === t.tag);
       return hit ? db.questions.get(hit.question_id).payloads[hit.chosen_option_id].concept_id : null;
@@ -130,6 +141,8 @@ export function studentProfile(db, studentId, overlay = {}) {
     error_mix,
     tag_table: tags,
     systemic_tags: systemicRoots,
+    blocked_roots: blockedRoots,
+    acceleration,
     time_profile,
     median_ratio: Math.round(median_ratio * 100) / 100,
     answer_changes: { total: ch, wrong_to_right: wr, right_to_wrong: rw },

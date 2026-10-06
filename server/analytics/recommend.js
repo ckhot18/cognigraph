@@ -19,6 +19,14 @@ function lessonFor(db, conceptId) {
   return db.pack.lessons.some((l) => l.concept_id === conceptId) ? conceptId : null;
 }
 
+/** Bridge state from the practice overlay: TODO → IN_PROGRESS → DONE. Never auto-finishes. */
+function recState(overlay, conceptId) {
+  const g = overlay?.practice?.[conceptId] ?? 0;
+  if (g >= 0.24) return 'DONE';
+  if (g > 0) return 'IN_PROGRESS';
+  return 'TODO';
+}
+
 /** Full ordered list; UI shows max 5 + "see all". Growth tone throughout. */
 export function bridgePlan(db, studentId, overlay = {}) {
   const { primary, profile: p } = segmentStudent(db, studentId, overlay);
@@ -28,6 +36,8 @@ export function bridgePlan(db, studentId, overlay = {}) {
   let pri = 1;
 
   // 1. SYSTEMIC escalating tags -> BRIDGE_CONCEPT per root cause.
+  // After 3 misses on one habit the plan redirects to the prerequisite root:
+  // downstream concepts hold while the foundation is rebuilt.
   for (const t of p.tag_table.filter((x) => x.severity === 'SYSTEMIC_MISCONCEPTION')) {
     const meta = db.pack.tags[t.tag];
     if (!meta?.escalates) continue;
@@ -38,10 +48,12 @@ export function bridgePlan(db, studentId, overlay = {}) {
       const l2 = practiceFor(db, { conceptId: root, level: 'L2', exclude: answered });
       recs.push({
         id: `bridge-${t.tag}-${root}`, priority: pri++, kind: 'BRIDGE_CONCEPT',
-        title: `Strengthen ${db.dag.nodes.find((n) => n.id === root)?.title ?? root}`,
-        why: `${t.count} off-target choices share this theme across ${t.topics.length} topic${t.topics.length > 1 ? 's' : ''} — one bridge covers them together.`,
+        redirect: true, root_concept: root,
+        title: `Back to foundations: ${db.dag.nodes.find((n) => n.id === root)?.title ?? root}`,
+        why: `${t.count} misses share this habit across ${t.topics.length} topic${t.topics.length > 1 ? 's' : ''} — the plan holds what comes next and rebuilds from ${db.dag.nodes.find((n) => n.id === root)?.title ?? root}.`,
         evidence: [{ tag: t.tag, count: t.count, topics: t.topics, sample: t.evidence }],
         marks_tied: `${t.count} of your recent questions`,
+        state: recState(overlay, root),
         actions: [
           ...(lesson ? [{ type: 'LESSON', ref: lesson, est_minutes: 8 }] : []),
           ...(l1.length > 0 ? [{ type: 'PRACTICE', ref: l1[0], est_minutes: 6 }] : []),

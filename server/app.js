@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validatePack } from './engine/validatePack.js';
 import { loadPack } from './engine/validatePack.js';
-import { createStore, issueToken, resetStore, recomputeStudent } from './store.js';
+import { createStore, issueToken, resetStore, recomputeStudent, SHOWCASE } from './store.js';
 import { bridgePlan } from './analytics/recommend.js';
 import { planLecture } from './analytics/lecturePlanner.js';
 import { startPractice, answerItem, publicItem } from './engine/practice.js';
@@ -161,7 +161,11 @@ export function createApp(dataDir) {
   });
 
   app.get('/api/student/me/bridge-plan', ...auth('student'), (req, res) => {
-    const plan = bridgePlan(db, req.user.id, store.overlays.get(req.user.id) ?? {});
+    const ov = store.overlays.get(req.user.id) ?? {};
+    const pristine = Object.keys(ov.practice ?? {}).length === 0;
+    const plan = pristine && store.cache.plans.get(req.user.id)
+      ? store.cache.plans.get(req.user.id)
+      : bridgePlan(db, req.user.id, ov);
     const mine = store.assignments.filter((a) => a.student_ids.includes(req.user.id));
     res.json({ recommendations: plan.slice(0, 5), more: plan.slice(5), assignments: mine });
   });
@@ -170,7 +174,19 @@ export function createApp(dataDir) {
     try {
       const focus = req.body?.focus ?? {};
       const answered = new Set((db.byStudent.get(req.user.id) ?? []).map((r) => r.question_id));
-      const { session, item } = startPractice(db, req.user.id, { tag: focus.tag ?? null, conceptId: focus.concept_id ?? null }, answered);
+      const prof = store.cache.profiles.get(req.user.id);
+      const failedConcepts = new Set();
+      for (const r of db.byStudent.get(req.user.id) ?? []) {
+        if (!r.is_correct) failedConcepts.add(db.questions.get(r.question_id)?.concept_id);
+      }
+      const topics = Object.entries(prof?.topic_scores ?? {}).sort((a, b) => a[1] - b[1]);
+      const context = {
+        failedConcepts: [...failedConcepts].filter(Boolean),
+        topTags: (prof?.tag_table ?? []).slice(0, 3).map((t) => t.tag),
+        weakTopics: topics.slice(0, 2).map(([t]) => t),
+        masteryMap: prof?.concept_mastery ?? {},
+      };
+      const { session, item } = startPractice(db, req.user.id, { tag: focus.tag ?? null, conceptId: focus.concept_id ?? null }, answered, context);
       const sid = `sess_${store.seq++}`;
       store.sessions.set(sid, { ...session, answeredGlobal: [...answered] });
       res.json({ session_id: sid, item, done: session.done });
@@ -188,6 +204,15 @@ export function createApp(dataDir) {
       const out = answerItem(db, sess, question_id, answer_option_id, ov.practice ?? {}, new Set(sess.answeredGlobal));
       ov.practice = out.overlay;
       store.overlays.set(req.user.id, ov);
+      // assignment progress follows the practice focus (never auto-finishes otherwise)
+      for (const a of store.assignments) {
+        if (!a.student_ids.includes(req.user.id) || a.kind !== 'PRACTICE') continue;
+        const f = a.focus ?? {};
+        const match = (!f.tag && !f.concept_id) || f.tag === sess.focusTag || (f.concept_id && f.concept_id === sess.focusConcept);
+        if (!match) continue;
+        if (out.done && a.status[req.user.id] !== 'DONE') a.status[req.user.id] = 'DONE';
+        else if (a.status[req.user.id] === 'ASSIGNED') a.status[req.user.id] = 'IN_PROGRESS';
+      }
       recomputeStudent(store, req.user.id);
       res.json(out);
     } catch (e) {
