@@ -141,7 +141,7 @@ export function ProgressRing({ value, size = 64, tone = 'strong' }) {
   );
 }
 
-export function LineChart({ points, width = 320, height = 120, hollowFrom = -1 }) {
+export function LineChart({ points, width = 320, height = 120, hollow = [] }) {
   if (points.length < 2) return <p className="text-sm text-stone-500">Not enough points yet.</p>;
   const max = Math.max(...points, 100);
   const min = Math.min(...points, 0);
@@ -152,7 +152,7 @@ export function LineChart({ points, width = 320, height = 120, hollowFrom = -1 }
     <svg viewBox={`0 0 ${width} ${height}`} className="w-full" role="img" aria-label="Progress line">
       <path d={d} fill="none" stroke="#1e40af" strokeWidth={2.5} strokeLinejoin="round" />
       {points.map((p, i) => (
-        <circle key={i} cx={X(i)} cy={Y(p)} r={4.5} fill={i >= hollowFrom && hollowFrom >= 0 ? '#fff' : '#1e40af'} stroke="#1e40af" strokeWidth={2.5}>
+        <circle key={i} cx={X(i)} cy={Y(p)} r={4.5} fill={hollow[i] ? '#fff' : '#1e40af'} stroke="#1e40af" strokeWidth={2.5}>
           <title>{p}%</title>
         </circle>
       ))}
