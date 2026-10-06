@@ -1,0 +1,88 @@
+{
+  "lessons": [
+    {
+      "concept_id": "kin_sign_conventions",
+      "micro_lesson": ["Pick + and − once, before writing any equation.", "Up-positive means gravity is −9.8 on every line.", "Check: does each term's sign match its arrow?"],
+      "worked_example": { "problem": "Ball up at 20 m/s, s at t = 3 s?", "steps": ["s = ut + ½at²", "a = −9.8", "s = 60 − 44.1 = 15.9 m"] },
+      "common_traps": ["Signs are chosen once at the start and must ride along on every term."],
+      "reflect_options": ["I will write +/− arrows first", "I will circle every g term", "I will recheck signs last"]
+    },
+    {
+      "concept_id": "kin_const_accel",
+      "micro_lesson": ["v=u+at, s=ut+½at², v²=u²+2as need constant a.", "Write the full equation before substituting.", "Match knowns (u, v, a, t, s) to pick the equation."],
+      "worked_example": { "problem": "10→30 m/s in 5 s, distance?", "steps": ["a = 4 m/s²", "s = 50 + 50 = 100 m"] },
+      "common_traps": ["Each formula has a validity boundary (constant a, series vs parallel, lens vs mirror) — check it first."],
+      "reflect_options": ["I will write the full equation first", "I will list knowns before choosing"]
+    },
+    {
+      "concept_id": "kin_implicit_conditions",
+      "micro_lesson": ["'Dropped' ⇒ u=0; 'at peak' ⇒ v=0; 'rests' ⇒ v=0.", "Translate words to values before equations.", "Underline the clue word in every problem."],
+      "worked_example": { "problem": "Dropped from 45 m, time?", "steps": ["u = 0", "t = √(2·45/9.8) ≈ 3.03 s"] },
+      "common_traps": ["Words like 'dropped', 'adiabatic' or 'ideal' quietly set a value — list what the words imply before solving."],
+      "reflect_options": ["I will underline clue words", "I will write u/v values first"]
+    },
+    {
+      "concept_id": "opt_sign_convention",
+      "micro_lesson": ["Cartesian: front of mirror is negative.", "Behind the mirror is positive.", "f sign follows the device (concave −, convex +)."],
+      "worked_example": { "problem": "Object 20 cm in front: u?", "steps": ["Front side is negative", "u = −20 cm"] },
+      "common_traps": ["Signs are chosen once at the start and must ride along on every term."],
+      "reflect_options": ["I will sketch the side map first", "I will verify f sign by device"]
+    },
+    {
+      "concept_id": "opt_mirror_lens",
+      "micro_lesson": ["Mirror and lens formulas differ — pick by device.", "Carry signs through the algebra.", "Check: does the image type match the sign?"],
+      "worked_example": { "problem": "f = −10 cm, u = −30 cm: v?", "steps": ["1/v = −1/10 + 1/30", "v = −7.5 cm"] },
+      "common_traps": ["Each formula has a validity boundary (constant a, series vs parallel, lens vs mirror) — check it first."],
+      "reflect_options": ["I will name the device first", "I will verify image type last"]
+    },
+    {
+      "concept_id": "cur_series_parallel",
+      "micro_lesson": ["Series: add directly. Parallel: reciprocals.", "Redraw and label each stage.", "Estimate: parallel is always less than the smallest."],
+      "worked_example": { "problem": "Two 6 Ω in parallel?", "steps": ["1/R = 1/6 + 1/6", "R = 3 Ω"] },
+      "common_traps": ["Each formula has a validity boundary (constant a, series vs parallel, lens vs mirror) — check it first."],
+      "reflect_options": ["I will redraw the circuit", "I will estimate first"]
+    },
+    {
+      "concept_id": "cur_kirchhoff",
+      "micro_lesson": ["Walk loops with a fixed direction.", "− to + is a rise; + to − is a drop.", "Sum to zero and solve."],
+      "worked_example": { "problem": "+12 V, drops 4 V and 5 V: rest?", "steps": ["12 − 4 − 5 − x = 0", "x = 3 V"] },
+      "common_traps": ["Signs are chosen once at the start and must ride along on every term."],
+      "reflect_options": ["I will mark +/− at each crossing", "I will walk the loop twice"]
+    },
+    {
+      "concept_id": "thm_first_law",
+      "micro_lesson": ["ΔU = Q − W (W by system).", "Work ON is +, heat OUT is −.", "Adiabatic pins Q = 0, not ΔU."],
+      "worked_example": { "problem": "Q = +500 J, W = 200 J by gas?", "steps": ["ΔU = 500 − 200", "ΔU = +300 J"] },
+      "common_traps": ["Signs are chosen once at the start and must ride along on every term."],
+      "reflect_options": ["I will label in/out first", "I will write ΔU = Q − W every time"]
+    },
+    {
+      "concept_id": "thm_heat_temperature",
+      "micro_lesson": ["Heat is transit; temperature is state.", "Gas laws need Kelvin.", "Convert before ratio."],
+      "worked_example": { "problem": "27°C → 327°C factor?", "steps": ["300 K → 600 K", "factor 2"] },
+      "common_traps": ["Convert to SI first (°C→K, cm→m) and check units at the end."],
+      "reflect_options": ["I will convert to K first", "I will separate heat vs temperature"]
+    },
+    {
+      "concept_id": "lom_friction",
+      "micro_lesson": ["Static adjusts up to μsN; kinetic is μkN.", "Direction opposes sliding.", "At rest, friction is what holds things up."],
+      "worked_example": { "problem": "μs = 0.4, N = 100 N: max?", "steps": ["f = μsN", "f = 40 N"] },
+      "common_traps": ["Each formula has a validity boundary (constant a, series vs parallel, lens vs mirror) — check it first."],
+      "reflect_options": ["I will find N first", "I will name the oppose direction"]
+    },
+    {
+      "concept_id": "wep_conservation",
+      "micro_lesson": ["Conservation needs no friction.", "With friction, subtract its work.", "Track where energy goes."],
+      "worked_example": { "problem": "Drop 5 m, no air: v?", "steps": ["mgh = ½mv²", "v = 10 m/s"] },
+      "common_traps": ["Conservation holds only without friction or other non-conservative work."],
+      "reflect_options": ["I will check for friction first", "I will write the balance with W_friction"]
+    },
+    {
+      "concept_id": "units_and_dimensions",
+      "micro_lesson": ["Convert to SI first.", "Check units of the answer.", "Estimate to catch slips."],
+      "worked_example": { "problem": "250 mA through 10 Ω: V?", "steps": ["0.25 A", "V = 2.5 V"] },
+      "common_traps": ["Convert to SI first (°C→K, cm→m) and check units at the end."],
+      "reflect_options": ["I will convert first", "I will check answer units"]
+    }
+  ]
+}

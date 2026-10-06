@@ -1,0 +1,5852 @@
+{
+ "questions": [
+  {
+   "id": "kin_t01",
+   "topic_id": "kinematics",
+   "concept_id": "kin_sign_conventions",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A ball is thrown straight up at 20 m/s. Taking upward as positive and g = 9.8 m/s², what is its displacement at t = 3 s?",
+   "solution_steps": [
+    "Write s = ut + ½at² with a = −9.8 m/s².",
+    "s = 20·3 + 0.5·(−9.8)·9 = 60 − 44.1 = 15.9 m."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "15.9 m"
+    },
+    {
+     "id": "b",
+     "text": "104.1 m"
+    },
+    {
+     "id": "c",
+     "text": "60.0 m"
+    },
+    {
+     "id": "d",
+     "text": "30.6 m"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "kin_sign_conventions",
+     "severity": "SYSTEMIC",
+     "explanation": "Used +9.8 for gravity in an up-positive frame: s = 20·3 + 0.5·9.8·9 = 104.1 m.",
+     "student_note": "Gravity was counted as +9.8 while up was positive. Try this bridge: keep the − sign on every gravity term."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "kin_const_accel",
+     "severity": "PARTIAL",
+     "explanation": "Computed s = u·t only, omitting ½at².",
+     "student_note": "The acceleration term went missing. Next bridge: write the full equation first, then substitute."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "kin_const_accel",
+     "severity": "SLIP",
+     "explanation": "Squared time as 6 instead of 9: 60 − 0.5·9.8·6 = 30.6 m.",
+     "student_note": "One computation slipped (3² = 9). A quick estimate-first habit bridges this."
+    }
+   },
+   "check": {
+    "expr": "20*3+0.5*(-9.8)*9",
+    "expected": 15.9,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "kin_t02",
+   "topic_id": "kinematics",
+   "concept_id": "kin_variable_accel",
+   "difficulty": 3,
+   "expected_time_sec": 75,
+   "text": "A particle moves with position x(t) = 3t³ (metres, seconds). Find its velocity at t = 2 s.",
+   "solution_steps": [
+    "Constant-acceleration formulas need constant a — here a changes.",
+    "Differentiate: v = dx/dt = 9t², so v(2) = 36 m/s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "36 m/s"
+    },
+    {
+     "id": "b",
+     "text": "Cannot be determined — a is not given"
+    },
+    {
+     "id": "c",
+     "text": "24 m/s"
+    },
+    {
+     "id": "d",
+     "text": "18 m/s"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "kin_variable_accel",
+     "severity": "PARTIAL",
+     "explanation": "Reached for v = u + at (needs constant a) on x(t) = 3t³.",
+     "student_note": "v = u + at only fits constant acceleration. Bridge: differentiate x(t) when a varies."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "kin_variable_accel",
+     "severity": "PARTIAL",
+     "explanation": "Reported position x(2) = 24 m as velocity.",
+     "student_note": "24 m is the position at t = 2. The bridge: velocity is the rate of change of position."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "kin_variable_accel",
+     "severity": "SLIP",
+     "explanation": "Power-rule slip giving 18 m/s.",
+     "student_note": "The derivative setup was right; one computation slipped."
+    }
+   },
+   "check": {
+    "expr": "9*4",
+    "expected": 36,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "kin_t03",
+   "topic_id": "kinematics",
+   "concept_id": "kin_implicit_conditions",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A stone is dropped from a 45 m cliff. How long to reach the ground? (g = 9.8 m/s²)",
+   "solution_steps": [
+    "'Dropped' sets u = 0, so s = ½gt².",
+    "t = √(2·45/9.8) ≈ 3.03 s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "3.03 s"
+    },
+    {
+     "id": "b",
+     "text": "Cannot be determined — u and v are missing"
+    },
+    {
+     "id": "c",
+     "text": "4.59 s"
+    },
+    {
+     "id": "d",
+     "text": "9.18 s"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "PARTIAL",
+     "explanation": "Missed that 'dropped' defines u = 0.",
+     "student_note": "The word 'dropped' already gives u = 0. Bridge: list what the words imply before solving."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "PARTIAL",
+     "explanation": "Divided 45/9.8 = 4.59 s, ignoring the ½t² structure.",
+     "student_note": "Free fall is accelerated, not uniform. Bridge: start from s = ut + ½at²."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "SLIP",
+     "explanation": "Computed 2·45/9.8 = 9.18 but skipped the square root.",
+     "student_note": "Setup was right; the final square root slipped past."
+    }
+   },
+   "check": {
+    "expr": "(2*45/9.8)**0.5",
+    "expected": 3.03,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "kin_t04",
+   "topic_id": "kinematics",
+   "concept_id": "kin_const_accel",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A car accelerates uniformly from 10 m/s to 30 m/s in 5 s. What distance does it cover?",
+   "solution_steps": [
+    "a = (30−10)/5 = 4 m/s².",
+    "s = 10·5 + ½·4·25 = 100 m."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "100 m"
+    },
+    {
+     "id": "b",
+     "text": "150 m"
+    },
+    {
+     "id": "c",
+     "text": "50 m"
+    },
+    {
+     "id": "d",
+     "text": "80 m"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "kin_const_accel",
+     "severity": "PARTIAL",
+     "explanation": "Used final velocity only: s = 30·5.",
+     "student_note": "Only the final speed was used. Bridge: average velocity × time, or the full equation."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "kin_const_accel",
+     "severity": "PARTIAL",
+     "explanation": "Used s = u·t = 50 m, omitting ½at².",
+     "student_note": "The acceleration term went missing — write the full equation first."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "kin_const_accel",
+     "severity": "SLIP",
+     "explanation": "Right setup, arithmetic landing on 80 m.",
+     "student_note": "Setup was right; one computation slipped."
+    }
+   },
+   "check": {
+    "expr": "10*5+0.5*4*25",
+    "expected": 100,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "kin_t05",
+   "topic_id": "kinematics",
+   "concept_id": "kin_2d_vectors",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A projectile is launched at 30 m/s at 30° above the horizontal. What is its initial vertical velocity?",
+   "solution_steps": [
+    "Split: vy = v·sinθ.",
+    "vy = 30·0.5 = 15 m/s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "15 m/s"
+    },
+    {
+     "id": "b",
+     "text": "26 m/s"
+    },
+    {
+     "id": "c",
+     "text": "30 m/s"
+    },
+    {
+     "id": "d",
+     "text": "17.3 m/s"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "kin_2d_vectors",
+     "severity": "PARTIAL",
+     "explanation": "Swapped sin/cos: 30·cos30° ≈ 26 m/s for vertical.",
+     "student_note": "Vertical needs sin, horizontal needs cos. Bridge: label the triangle first."
+    },
+    "c": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "kin_2d_vectors",
+     "severity": "PARTIAL",
+     "explanation": "Assigned full 30 m/s to vertical.",
+     "student_note": "30 m/s is the full speed, not its vertical part."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "kin_2d_vectors",
+     "severity": "SLIP",
+     "explanation": "Component setup right, arithmetic landing on 17.3.",
+     "student_note": "Setup was right; one computation slipped."
+    }
+   },
+   "check": {
+    "expr": "30*0.5",
+    "expected": 15,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "kin_t06",
+   "topic_id": "kinematics",
+   "concept_id": "kin_const_accel",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A car at 20 m/s brakes uniformly at 5 m/s² to rest. Stopping distance?",
+   "solution_steps": [
+    "v² = u² + 2as with v = 0, a = −5.",
+    "0 = 400 − 10s → s = 40 m."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "40 m"
+    },
+    {
+     "id": "b",
+     "text": "80 m"
+    },
+    {
+     "id": "c",
+     "text": "4 m"
+    },
+    {
+     "id": "d",
+     "text": "100 m"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "omitted_term",
+     "concept_id": "kin_const_accel",
+     "severity": "PARTIAL",
+     "explanation": "Dropped the 2 in v² = u² + 2as: 400/5 = 80 m.",
+     "student_note": "The factor 2 went missing. Bridge: write the full equation before substituting."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "kin_const_accel",
+     "severity": "SLIP",
+     "explanation": "Setup right, arithmetic landing on 4 m.",
+     "student_note": "Setup was right; one computation slipped."
+    },
+    "d": {
+     "tag": "sign_convention",
+     "concept_id": "kin_sign_conventions",
+     "severity": "PARTIAL",
+     "explanation": "Mishandled signs in the braking equation, inflating to 100 m.",
+     "student_note": "Braking means a opposes motion — carry the sign through."
+    }
+   },
+   "check": {
+    "expr": "400/10",
+    "expected": 40,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "kin_t07",
+   "topic_id": "kinematics",
+   "concept_id": "units_and_dimensions",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A sprinter covers 100 m in 9.8 s. Average speed in km/h?",
+   "solution_steps": [
+    "Speed = 100/9.8 ≈ 10.2 m/s.",
+    "×3.6 → ≈ 36.7 km/h."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "36.7 km/h"
+    },
+    {
+     "id": "b",
+     "text": "10.2 km/h"
+    },
+    {
+     "id": "c",
+     "text": "367 km/h"
+    },
+    {
+     "id": "d",
+     "text": "3.7 km/h"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Left the answer in m/s.",
+     "student_note": "The number was right, the unit step was skipped. Bridge: convert to the asked unit last."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Multiplied by 36 instead of 3.6.",
+     "student_note": "m/s → km/h is ×3.6. One conversion habit to build."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Decimal slip landing on 3.7.",
+     "student_note": "Estimate first (≈36 km/h for a sprinter) to catch slips."
+    }
+   },
+   "check": {
+    "expr": "100/9.8*3.6",
+    "expected": 36.7,
+    "tol": 0.1
+   }
+  },
+  {
+   "id": "kin_t08",
+   "topic_id": "kinematics",
+   "concept_id": "kin_implicit_conditions",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A ball is thrown up at 15 m/s. What is its velocity at the peak?",
+   "solution_steps": [
+    "'At the peak' the ball momentarily stops rising.",
+    "v = 0 m/s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "0 m/s"
+    },
+    {
+     "id": "b",
+     "text": "15 m/s"
+    },
+    {
+     "id": "c",
+     "text": "−15 m/s"
+    },
+    {
+     "id": "d",
+     "text": "−9.8 m/s"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "PARTIAL",
+     "explanation": "Repeated the launch speed at the peak.",
+     "student_note": "'At the peak' sets v = 0. Bridge: translate the words into values first."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "PARTIAL",
+     "explanation": "Assumed symmetric return speed at the peak.",
+     "student_note": "−15 m/s happens back at launch height, not at the peak."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "SLIP",
+     "explanation": "Answered with g instead of velocity.",
+     "student_note": "The question asked for velocity — g is acceleration. A 20-second restate helps."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "kin_t09",
+   "topic_id": "kinematics",
+   "concept_id": "kin_const_accel",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "A train starts from rest and accelerates at 1.2 m/s² for 20 s. How far does it travel?",
+   "solution_steps": [
+    "u = 0 so s = ½at².",
+    "s = 0.5·1.2·400 = 240 m."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "240 m"
+    },
+    {
+     "id": "b",
+     "text": "24 m"
+    },
+    {
+     "id": "c",
+     "text": "480 m"
+    },
+    {
+     "id": "d",
+     "text": "12 m"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "arithmetic_slip",
+     "concept_id": "kin_const_accel",
+     "severity": "SLIP",
+     "explanation": "Decimal/zero slip landing on 24 m.",
+     "student_note": "Estimate first: 1 m/s² for 20 s is already 200+ m."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "kin_const_accel",
+     "severity": "PARTIAL",
+     "explanation": "Used s = at² = 480 m, dropping ½.",
+     "student_note": "The ½ in ½at² went missing — full equation first."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "kin_const_accel",
+     "severity": "SLIP",
+     "explanation": "Answered with a·t/2 = 12 (a speed, not distance).",
+     "student_note": "12 has speed units. Bridge: check units of the answer."
+    }
+   },
+   "check": {
+    "expr": "0.5*1.2*400",
+    "expected": 240,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "kin_t10",
+   "topic_id": "kinematics",
+   "concept_id": "kin_scalar_variables",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Which list gives only scalar quantities?",
+   "solution_steps": [
+    "Scalars have magnitude only.",
+    "Distance, speed, time — all scalars."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Distance, speed, time"
+    },
+    {
+     "id": "b",
+     "text": "Displacement, velocity, time"
+    },
+    {
+     "id": "c",
+     "text": "Distance, velocity, acceleration"
+    },
+    {
+     "id": "d",
+     "text": "Displacement, speed, force"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "kin_scalar_variables",
+     "severity": "PARTIAL",
+     "explanation": "Listed displacement and velocity as scalars.",
+     "student_note": "Displacement and velocity carry direction. Bridge: ask 'does direction matter?' per quantity."
+    },
+    "c": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "kin_scalar_variables",
+     "severity": "PARTIAL",
+     "explanation": "Listed velocity and acceleration as scalars.",
+     "student_note": "Velocity and acceleration are vectors."
+    },
+    "d": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "kin_scalar_variables",
+     "severity": "PARTIAL",
+     "explanation": "Listed displacement and force as scalars.",
+     "student_note": "Displacement and force need direction."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "kin_p01",
+   "topic_id": "kinematics",
+   "concept_id": "kin_sign_conventions",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Up is positive. A stone falls downward. What is the sign of its velocity?",
+   "solution_steps": [
+    "Down is opposite to up-positive.",
+    "Velocity is negative."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Negative"
+    },
+    {
+     "id": "b",
+     "text": "Positive"
+    },
+    {
+     "id": "c",
+     "text": "Zero"
+    },
+    {
+     "id": "d",
+     "text": "Cannot tell"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "kin_sign_conventions",
+     "severity": "PARTIAL",
+     "explanation": "Took downward motion as positive in an up-positive frame.",
+     "student_note": "Down is negative when up is positive."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "kin_sign_conventions",
+     "severity": "SLIP",
+     "explanation": "Confused velocity with acceleration-at-instant.",
+     "student_note": "Falling means moving — velocity is not zero."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "kin_sign_conventions",
+     "severity": "SLIP",
+     "explanation": "Claimed indeterminable; frame is fully given.",
+     "student_note": "The frame is fully given — commit to the sign."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "kin_p02",
+   "topic_id": "kinematics",
+   "concept_id": "kin_sign_conventions",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Up is positive, g = 9.8 m/s². What is 'a' for a freely falling body?",
+   "solution_steps": [
+    "Gravity points down.",
+    "Down is negative: a = −9.8 m/s²."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "−9.8 m/s²"
+    },
+    {
+     "id": "b",
+     "text": "+9.8 m/s²"
+    },
+    {
+     "id": "c",
+     "text": "0 m/s²"
+    },
+    {
+     "id": "d",
+     "text": "Depends on speed"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "kin_sign_conventions",
+     "severity": "SYSTEMIC",
+     "explanation": "Assigned +9.8 to gravity in an up-positive frame.",
+     "student_note": "Gravity points down, so it is −9.8 here."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "kin_sign_conventions",
+     "severity": "SLIP",
+     "explanation": "Set a = 0 for free fall.",
+     "student_note": "Free fall still accelerates — only the velocity can be zero."
+    },
+    "d": {
+     "tag": "formula_misapplication",
+     "concept_id": "kin_sign_conventions",
+     "severity": "SLIP",
+     "explanation": "Tied g to speed.",
+     "student_note": "g is constant near Earth, independent of speed."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "kin_p03",
+   "topic_id": "kinematics",
+   "concept_id": "kin_const_accel",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Up is positive. A ball tossed up at 12 m/s: which expression gives s at t = 2 s?",
+   "solution_steps": [
+    "s = ut + ½at² with a = −9.8.",
+    "s = 24 − 19.6 = 4.4 m."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "12·2 + 0.5·(−9.8)·4"
+    },
+    {
+     "id": "b",
+     "text": "12·2 + 0.5·(9.8)·4"
+    },
+    {
+     "id": "c",
+     "text": "12·2"
+    },
+    {
+     "id": "d",
+     "text": "0.5·(−9.8)·4"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "kin_sign_conventions",
+     "severity": "PARTIAL",
+     "explanation": "Used +9.8 in an up-positive frame.",
+     "student_note": "Keep the minus on gravity throughout."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "kin_const_accel",
+     "severity": "PARTIAL",
+     "explanation": "Used s = ut only.",
+     "student_note": "The ½at² term went missing."
+    },
+    "d": {
+     "tag": "omitted_term",
+     "concept_id": "kin_const_accel",
+     "severity": "PARTIAL",
+     "explanation": "Used ½at² only, dropping ut.",
+     "student_note": "Both terms count — ut carries the launch."
+    }
+   },
+   "check": {
+    "expr": "12*2+0.5*(-9.8)*4",
+    "expected": 4.4,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "kin_p04",
+   "topic_id": "kinematics",
+   "concept_id": "kin_implicit_conditions",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A coin is 'released from rest' from a tower. What is u?",
+   "solution_steps": [
+    "'From rest' means starting speed zero.",
+    "u = 0 m/s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "0 m/s"
+    },
+    {
+     "id": "b",
+     "text": "9.8 m/s"
+    },
+    {
+     "id": "c",
+     "text": "Unknown"
+    },
+    {
+     "id": "d",
+     "text": "Depends on height"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "careless_read",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "SLIP",
+     "explanation": "Answered with g.",
+     "student_note": "9.8 is the acceleration, not the starting speed."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "PARTIAL",
+     "explanation": "Claimed u unknown despite 'from rest'.",
+     "student_note": "'From rest' is the value: u = 0."
+    },
+    "d": {
+     "tag": "implicit_condition",
+     "concept_id": "kin_implicit_conditions",
+     "severity": "SLIP",
+     "explanation": "Tied u to height.",
+     "student_note": "Starting speed does not depend on height."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "kin_p05",
+   "topic_id": "kinematics",
+   "concept_id": "kin_variable_accel",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "a(t) = 6t. Can v = u + at be used directly?",
+   "solution_steps": [
+    "v = u + at assumes constant a.",
+    "Here a varies, so integrate: v = u + 3t²."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "No — use calculus"
+    },
+    {
+     "id": "b",
+     "text": "Yes, put a = 6t into it"
+    },
+    {
+     "id": "c",
+     "text": "Yes, use average a"
+    },
+    {
+     "id": "d",
+     "text": "No, unsolvable"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "kin_variable_accel",
+     "severity": "PARTIAL",
+     "explanation": "Substituted varying a into a constant-a formula.",
+     "student_note": "That formula needs constant a — integrate instead."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "kin_variable_accel",
+     "severity": "PARTIAL",
+     "explanation": "Averaged a to force-fit the formula.",
+     "student_note": "Averaging hides how a changes."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "kin_variable_accel",
+     "severity": "SLIP",
+     "explanation": "Declared unsolvable.",
+     "student_note": "Calculus handles it: v = u + 3t²."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "kin_p06",
+   "topic_id": "kinematics",
+   "concept_id": "kin_2d_vectors",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A ball is launched at 20 m/s at 60° above horizontal. Initial vertical component? (sin60° ≈ 0.866)",
+   "solution_steps": [
+    "vy = v·sinθ.",
+    "vy = 20·0.866 ≈ 17.3 m/s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "17.3 m/s"
+    },
+    {
+     "id": "b",
+     "text": "10 m/s"
+    },
+    {
+     "id": "c",
+     "text": "20 m/s"
+    },
+    {
+     "id": "d",
+     "text": "15 m/s"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "kin_2d_vectors",
+     "severity": "PARTIAL",
+     "explanation": "Used cos60° for vertical.",
+     "student_note": "Vertical needs sin: 20·0.866."
+    },
+    "c": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "kin_2d_vectors",
+     "severity": "PARTIAL",
+     "explanation": "Took full speed as vertical.",
+     "student_note": "20 m/s is the full speed, not its vertical part."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "kin_2d_vectors",
+     "severity": "SLIP",
+     "explanation": "Arithmetic landing on 15.",
+     "student_note": "20·0.866 ≈ 17.3. Check the product."
+    }
+   },
+   "check": {
+    "expr": "20*0.866",
+    "expected": 17.3,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "lom_t01",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_free_body",
+   "difficulty": 1,
+   "expected_time_sec": 60,
+   "text": "A block rests on a table. Which forces act on the block?",
+   "solution_steps": [
+    "List contact + non-contact forces.",
+    "Weight down, normal reaction up."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Weight down + normal up"
+    },
+    {
+     "id": "b",
+     "text": "Weight down only"
+    },
+    {
+     "id": "c",
+     "text": "Normal up only"
+    },
+    {
+     "id": "d",
+     "text": "Weight + normal + friction"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_free_body",
+     "severity": "PARTIAL",
+     "explanation": "Omitted the normal reaction.",
+     "student_note": "The table pushes back up. Bridge: list every contact."
+    },
+    "c": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_free_body",
+     "severity": "PARTIAL",
+     "explanation": "Omitted weight.",
+     "student_note": "Weight acts even at rest."
+    },
+    "d": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_friction",
+     "severity": "SLIP",
+     "explanation": "Added friction with no horizontal push.",
+     "student_note": "No horizontal push means no friction here."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "lom_t02",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_second_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A 4 kg block is pushed by a net 12 N force. Its acceleration?",
+   "solution_steps": [
+    "ΣF = ma.",
+    "a = 12/4 = 3 m/s²."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "3 m/s²"
+    },
+    {
+     "id": "b",
+     "text": "48 m/s²"
+    },
+    {
+     "id": "c",
+     "text": "0.33 m/s²"
+    },
+    {
+     "id": "d",
+     "text": "16 m/s²"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_second_law",
+     "severity": "PARTIAL",
+     "explanation": "Multiplied F·m = 48.",
+     "student_note": "Force is divided by mass, not multiplied. Bridge: a = F/m."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Inverted to 4/12.",
+     "student_note": "Check: bigger force means bigger a — 0.33 is off."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Added 12 + 4.",
+     "student_note": "Force and mass combine by division here, not addition."
+    }
+   },
+   "check": {
+    "expr": "12/4",
+    "expected": 3,
+    "tol": 0.01
+   }
+  },
+  {
+   "id": "lom_t03",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_friction",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "μs = 0.4 for a 10 kg block (g = 10). Maximum static friction?",
+   "solution_steps": [
+    "Limiting friction = μs·N = μs·mg.",
+    "f = 0.4·100 = 40 N."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "40 N"
+    },
+    {
+     "id": "b",
+     "text": "4 N"
+    },
+    {
+     "id": "c",
+     "text": "100 N"
+    },
+    {
+     "id": "d",
+     "text": "0.4 N"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "lom_friction",
+     "severity": "SLIP",
+     "explanation": "Used μs·m = 4, skipping g.",
+     "student_note": "Normal = mg = 100 N first, then × μ."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_friction",
+     "severity": "PARTIAL",
+     "explanation": "Answered with N itself.",
+     "student_note": "100 N is the normal force; friction is μ times that."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "lom_friction",
+     "severity": "SLIP",
+     "explanation": "Answered with μ alone.",
+     "student_note": "μ has no units of force — multiply by N."
+    }
+   },
+   "check": {
+    "expr": "0.4*10*10",
+    "expected": 40,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "lom_t04",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_connected_bodies",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "Two masses 3 kg and 2 kg hang over a pulley. Acceleration of the system? (g = 10)",
+   "solution_steps": [
+    "Net pull = (3−2)·10 = 10 N; total mass 5 kg.",
+    "a = 10/5 = 2 m/s²."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "2 m/s²"
+    },
+    {
+     "id": "b",
+     "text": "10 m/s²"
+    },
+    {
+     "id": "c",
+     "text": "5 m/s²"
+    },
+    {
+     "id": "d",
+     "text": "0 m/s²"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_connected_bodies",
+     "severity": "PARTIAL",
+     "explanation": "Used g directly as the system acceleration.",
+     "student_note": "Both masses share one acceleration — divide net pull by total mass."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_connected_bodies",
+     "severity": "SLIP",
+     "explanation": "Divided by one mass: 10/2.",
+     "student_note": "Total moving mass is 3 + 2 = 5 kg."
+    },
+    "d": {
+     "tag": "implicit_condition",
+     "concept_id": "lom_connected_bodies",
+     "severity": "SLIP",
+     "explanation": "Claimed balance.",
+     "student_note": "3 kg outweighs 2 kg, so the system moves."
+    }
+   },
+   "check": {
+    "expr": "(3-2)*10/5",
+    "expected": 2,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "lom_t05",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_second_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A 2 kg object moves at constant velocity. Net force on it?",
+   "solution_steps": [
+    "Constant velocity means a = 0.",
+    "ΣF = m·0 = 0."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "0 N"
+    },
+    {
+     "id": "b",
+     "text": "2 N"
+    },
+    {
+     "id": "c",
+     "text": "20 N"
+    },
+    {
+     "id": "d",
+     "text": "Depends on speed"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_second_law",
+     "severity": "PARTIAL",
+     "explanation": "Equated force with mass.",
+     "student_note": "Steady motion needs zero net force, not zero speed."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_second_law",
+     "severity": "PARTIAL",
+     "explanation": "Equated force with weight.",
+     "student_note": "Weight acts, but net force is still zero at constant velocity."
+    },
+    "d": {
+     "tag": "implicit_condition",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Tied force to speed value.",
+     "student_note": "Net force depends on acceleration, which is zero here."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "lom_t06",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_free_body",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A block is pushed right on rough ground and moves at steady speed. Friction points?",
+   "solution_steps": [
+    "Friction opposes relative motion.",
+    "Motion is right, so friction points left."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Left"
+    },
+    {
+     "id": "b",
+     "text": "Right"
+    },
+    {
+     "id": "c",
+     "text": "Up"
+    },
+    {
+     "id": "d",
+     "text": "Zero (steady speed)"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_free_body",
+     "severity": "PARTIAL",
+     "explanation": "Aligned friction with motion.",
+     "student_note": "Friction opposes the sliding, so it points left here."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "lom_free_body",
+     "severity": "SLIP",
+     "explanation": "Picked vertical.",
+     "student_note": "The sliding is horizontal — friction is horizontal too."
+    },
+    "d": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_friction",
+     "severity": "SLIP",
+     "explanation": "Set friction zero at steady speed.",
+     "student_note": "Steady speed means friction balances the push, not zero."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "lom_t07",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_second_law",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "A 5 kg block on a smooth 30° incline. Acceleration down the slope? (g = 10)",
+   "solution_steps": [
+    "Down-slope pull = mg·sin30° = 25 N.",
+    "a = 25/5 = 5 m/s²."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "5 m/s²"
+    },
+    {
+     "id": "b",
+     "text": "10 m/s²"
+    },
+    {
+     "id": "c",
+     "text": "8.7 m/s²"
+    },
+    {
+     "id": "d",
+     "text": "2.5 m/s²"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_second_law",
+     "severity": "PARTIAL",
+     "explanation": "Used full g along the slope.",
+     "student_note": "Only the along-slope component pulls: g·sin30°."
+    },
+    "c": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_second_law",
+     "severity": "PARTIAL",
+     "explanation": "Used g·cos30° along the slope.",
+     "student_note": "Along the slope is sin; cos is into the slope."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Halved again to 2.5.",
+     "student_note": "25/5 = 5 — one line at a time."
+    }
+   },
+   "check": {
+    "expr": "10*0.5",
+    "expected": 5,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "lom_t08",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_friction",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A book is pressed against a vertical wall and does not slide. Friction acts?",
+   "solution_steps": [
+    "Weight pulls down; static friction balances it.",
+    "Friction acts upward."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Upward"
+    },
+    {
+     "id": "b",
+     "text": "Downward"
+    },
+    {
+     "id": "c",
+     "text": "Into the wall"
+    },
+    {
+     "id": "d",
+     "text": "Zero"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_friction",
+     "severity": "PARTIAL",
+     "explanation": "Aligned friction with weight.",
+     "student_note": "Friction fights the slide — the book would slide down, so friction is up."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "lom_friction",
+     "severity": "SLIP",
+     "explanation": "Picked the normal direction.",
+     "student_note": "Into the wall is the normal force, not friction."
+    },
+    "d": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_friction",
+     "severity": "SLIP",
+     "explanation": "Set friction zero at rest.",
+     "student_note": "At rest, friction is exactly what holds the book up."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "lom_t09",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_connected_bodies",
+   "difficulty": 2,
+   "expected_time_sec": 75,
+   "text": "In a tug-of-war both teams pull 500 N and nobody moves. Tension in the rope?",
+   "solution_steps": [
+    "Static: each side balances.",
+    "Tension = 500 N."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "500 N"
+    },
+    {
+     "id": "b",
+     "text": "1000 N"
+    },
+    {
+     "id": "c",
+     "text": "0 N"
+    },
+    {
+     "id": "d",
+     "text": "250 N"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_connected_bodies",
+     "severity": "PARTIAL",
+     "explanation": "Added both pulls.",
+     "student_note": "Tension is one pull, not the sum. Bridge: cut the rope mentally and balance one side."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "lom_connected_bodies",
+     "severity": "SLIP",
+     "explanation": "Read 'nobody moves' as zero tension.",
+     "student_note": "No motion means balanced — the rope is still taut at 500 N."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_connected_bodies",
+     "severity": "SLIP",
+     "explanation": "Halved to 250 N.",
+     "student_note": "No halving here — each side feels the full 500 N."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "lom_t10",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_second_law",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A lift accelerates upward. Your apparent weight?",
+   "solution_steps": [
+    "Upward acceleration needs extra normal force.",
+    "Apparent weight increases."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Increases"
+    },
+    {
+     "id": "b",
+     "text": "Decreases"
+    },
+    {
+     "id": "c",
+     "text": "Unchanged"
+    },
+    {
+     "id": "d",
+     "text": "Zero"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "lom_second_law",
+     "severity": "PARTIAL",
+     "explanation": "Flipped the acceleration direction.",
+     "student_note": "Upward acceleration pushes the floor harder into you."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Kept N = mg.",
+     "student_note": "N = mg only when acceleration is zero."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Claimed weightlessness.",
+     "student_note": "Weightlessness needs downward a = g."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "lom_p01",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_free_body",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A ball hangs from a string at rest. Which diagram is complete?",
+   "solution_steps": [
+    "List forces: weight down, tension up.",
+    "Both arrows, labelled."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Weight down + tension up"
+    },
+    {
+     "id": "b",
+     "text": "Tension up only"
+    },
+    {
+     "id": "c",
+     "text": "Weight down only"
+    },
+    {
+     "id": "d",
+     "text": "Weight + tension + air push"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_free_body",
+     "severity": "PARTIAL",
+     "explanation": "Dropped weight.",
+     "student_note": "Weight always acts — include it."
+    },
+    "c": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_free_body",
+     "severity": "PARTIAL",
+     "explanation": "Dropped tension.",
+     "student_note": "The string pulls up — include tension."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "lom_free_body",
+     "severity": "SLIP",
+     "explanation": "Invented an air push.",
+     "student_note": "Only draw forces that act — no air push here."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "lom_p02",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_second_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A 6 kg cart gets a 3 N push along the track and a 4 N push sideways. Net acceleration magnitude?",
+   "solution_steps": [
+    "Net F = 5 N (3-4-5 triangle).",
+    "a = 5/6 ≈ 0.83 m/s²."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "0.83 m/s²"
+    },
+    {
+     "id": "b",
+     "text": "7 m/s² push total"
+    },
+    {
+     "id": "c",
+     "text": "1.17 m/s²"
+    },
+    {
+     "id": "d",
+     "text": "0.5 m/s²"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "lom_second_law",
+     "severity": "PARTIAL",
+     "explanation": "Added 3 + 4 as scalars then forgot ÷m.",
+     "student_note": "Perpendicular pushes combine as vectors (5 N), then divide by mass."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Divided 7/6.",
+     "student_note": "Combine as vectors first: 5 N, then 5/6."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Arithmetic landing on 0.5.",
+     "student_note": "5/6 ≈ 0.83 — check the division."
+    }
+   },
+   "check": {
+    "expr": "5/6",
+    "expected": 0.83,
+    "tol": 0.03
+   }
+  },
+  {
+   "id": "lom_p03",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_friction",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "μk = 0.2, N = 50 N. Kinetic friction?",
+   "solution_steps": [
+    "fk = μk·N.",
+    "fk = 10 N."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "10 N"
+    },
+    {
+     "id": "b",
+     "text": "0.2 N"
+    },
+    {
+     "id": "c",
+     "text": "50 N"
+    },
+    {
+     "id": "d",
+     "text": "60 N"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "careless_read",
+     "concept_id": "lom_friction",
+     "severity": "SLIP",
+     "explanation": "Answered with μ.",
+     "student_note": "μ is a ratio — multiply by N."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_friction",
+     "severity": "PARTIAL",
+     "explanation": "Answered with N.",
+     "student_note": "N is the normal; friction is μ·N."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_friction",
+     "severity": "SLIP",
+     "explanation": "Added 50 + 10.",
+     "student_note": "Friction here is just μ·N = 10 N."
+    }
+   },
+   "check": {
+    "expr": "0.2*50",
+    "expected": 10,
+    "tol": 0.1
+   }
+  },
+  {
+   "id": "lom_p04",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_connected_bodies",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Two blocks (2 kg + 3 kg) are pushed together by 10 N on smooth ground. Acceleration of the pair?",
+   "solution_steps": [
+    "Treat as one 5 kg mass.",
+    "a = 10/5 = 2 m/s²."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "2 m/s²"
+    },
+    {
+     "id": "b",
+     "text": "5 m/s²"
+    },
+    {
+     "id": "c",
+     "text": "3.3 m/s²"
+    },
+    {
+     "id": "d",
+     "text": "10 m/s²"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "lom_connected_bodies",
+     "severity": "PARTIAL",
+     "explanation": "Divided by one block: 10/2.",
+     "student_note": "They move as one — total mass 5 kg."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_connected_bodies",
+     "severity": "SLIP",
+     "explanation": "Divided 10/3.",
+     "student_note": "Total mass is 2 + 3 = 5 kg."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "lom_connected_bodies",
+     "severity": "SLIP",
+     "explanation": "Answered with the force.",
+     "student_note": "10 N is the push; acceleration is F/m."
+    }
+   },
+   "check": {
+    "expr": "10/5",
+    "expected": 2,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "lom_p05",
+   "topic_id": "laws_of_motion",
+   "concept_id": "vectors_basics",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A 10 N force acts at 60° above horizontal. Horizontal component?",
+   "solution_steps": [
+    "Fx = F·cosθ.",
+    "Fx = 10·0.5 = 5 N."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "5 N"
+    },
+    {
+     "id": "b",
+     "text": "8.7 N"
+    },
+    {
+     "id": "c",
+     "text": "10 N"
+    },
+    {
+     "id": "d",
+     "text": "0 N"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "vectors_basics",
+     "severity": "PARTIAL",
+     "explanation": "Used sin for horizontal.",
+     "student_note": "Horizontal is cos; vertical is sin."
+    },
+    "c": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "vectors_basics",
+     "severity": "PARTIAL",
+     "explanation": "Took the full 10 N.",
+     "student_note": "Only the along-axis part counts: 5 N."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "vectors_basics",
+     "severity": "SLIP",
+     "explanation": "Set horizontal to zero.",
+     "student_note": "60° still has a horizontal part."
+    }
+   },
+   "check": {
+    "expr": "10*0.5",
+    "expected": 5,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "lom_p06",
+   "topic_id": "laws_of_motion",
+   "concept_id": "lom_second_law",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "m = 2 kg, a = 4 m/s². Net force?",
+   "solution_steps": [
+    "F = ma.",
+    "F = 8 N."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "8 N"
+    },
+    {
+     "id": "b",
+     "text": "2 N"
+    },
+    {
+     "id": "c",
+     "text": "6 N"
+    },
+    {
+     "id": "d",
+     "text": "0.5 N"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Answered with mass.",
+     "student_note": "Multiply: 2·4 = 8 N."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Added 2 + 4.",
+     "student_note": "F = ma is multiplication."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "lom_second_law",
+     "severity": "SLIP",
+     "explanation": "Divided 2/4.",
+     "student_note": "Multiply mass by acceleration."
+    }
+   },
+   "check": {
+    "expr": "2*4",
+    "expected": 8,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "wep_t01",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_work",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A 10 N force pushes a box 4 m in the direction of the force. Work done?",
+   "solution_steps": [
+    "W = F·s·cosθ, θ = 0.",
+    "W = 10·4 = 40 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "40 J"
+    },
+    {
+     "id": "b",
+     "text": "14 J"
+    },
+    {
+     "id": "c",
+     "text": "2.5 J"
+    },
+    {
+     "id": "d",
+     "text": "400 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_work",
+     "severity": "SLIP",
+     "explanation": "Added 10 + 4.",
+     "student_note": "Work multiplies force by distance: 40 J."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_work",
+     "severity": "SLIP",
+     "explanation": "Divided 10/4.",
+     "student_note": "Multiply here, not divide."
+    },
+    "d": {
+     "tag": "unit_conversion",
+     "concept_id": "wep_work",
+     "severity": "SLIP",
+     "explanation": "Extra zero, 400 J.",
+     "student_note": "10·4 = 40. Estimate first to catch extra zeros."
+    }
+   },
+   "check": {
+    "expr": "10*4",
+    "expected": 40,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "wep_t02",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_work",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A porter carries luggage horizontally at steady speed. Work done by the carrying (vertical) force?",
+   "solution_steps": [
+    "Force is vertical, displacement horizontal: θ = 90°.",
+    "W = F·s·cos90° = 0."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Zero"
+    },
+    {
+     "id": "b",
+     "text": "Positive"
+    },
+    {
+     "id": "c",
+     "text": "Negative"
+    },
+    {
+     "id": "d",
+     "text": "Equal to weight × distance"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "wep_work",
+     "severity": "PARTIAL",
+     "explanation": "Ignored the angle between force and displacement.",
+     "student_note": "Perpendicular force and motion give zero work — check the angle."
+    },
+    "c": {
+     "tag": "sign_convention",
+     "concept_id": "wep_work",
+     "severity": "PARTIAL",
+     "explanation": "Assigned negative for any vertical force.",
+     "student_note": "Sign comes from cosθ; at 90° it is exactly zero."
+    },
+    "d": {
+     "tag": "formula_misapplication",
+     "concept_id": "wep_work",
+     "severity": "PARTIAL",
+     "explanation": "Used W = F·s ignoring direction.",
+     "student_note": "W = F·s·cosθ — the angle decides."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "wep_t03",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_energy_theorem",
+   "difficulty": 2,
+   "expected_time_sec": 75,
+   "text": "A 2 kg ball moving at 6 m/s is stopped by friction. Work done by friction?",
+   "solution_steps": [
+    "Work-energy: W = ΔKE = 0 − ½·2·36.",
+    "W = −36 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "−36 J"
+    },
+    {
+     "id": "b",
+     "text": "+36 J"
+    },
+    {
+     "id": "c",
+     "text": "0 J"
+    },
+    {
+     "id": "d",
+     "text": "−72 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "wep_work",
+     "severity": "PARTIAL",
+     "explanation": "Dropped the minus: friction removes energy.",
+     "student_note": "Friction opposes motion, so its work is negative."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "wep_energy_theorem",
+     "severity": "PARTIAL",
+     "explanation": "Set work zero at rest.",
+     "student_note": "Zero final KE still means −36 J was removed."
+    },
+    "d": {
+     "tag": "omitted_term",
+     "concept_id": "wep_energy_theorem",
+     "severity": "PARTIAL",
+     "explanation": "Used mv² = 72, dropping ½.",
+     "student_note": "KE carries the ½: ½·2·36 = 36."
+    }
+   },
+   "check": {
+    "expr": "-0.5*2*36",
+    "expected": -36,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "wep_t04",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_conservation",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "A block slides down a rough incline and slows. Can mgh_top = ½mv²_bottom be used directly?",
+   "solution_steps": [
+    "That equality needs no friction.",
+    "Friction does negative work, so include it."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "No — subtract friction work"
+    },
+    {
+     "id": "b",
+     "text": "Yes, always"
+    },
+    {
+     "id": "c",
+     "text": "Yes, friction adds energy"
+    },
+    {
+     "id": "d",
+     "text": "No, energy vanishes"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Applied conservation with friction present.",
+     "student_note": "Friction present means account for its work first."
+    },
+    "c": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Treated friction as energy source.",
+     "student_note": "Friction removes mechanical energy here."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "wep_conservation",
+     "severity": "SLIP",
+     "explanation": "Claimed energy vanishes.",
+     "student_note": "Energy converts to heat — track where it goes."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "wep_t05",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_conservation",
+   "difficulty": 2,
+   "expected_time_sec": 75,
+   "text": "A 1 kg ball drops 5 m (g = 10, no air). Speed at ground?",
+   "solution_steps": [
+    "mgh = ½mv².",
+    "v = √(2·10·5) = 10 m/s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "10 m/s"
+    },
+    {
+     "id": "b",
+     "text": "50 m/s"
+    },
+    {
+     "id": "c",
+     "text": "5 m/s"
+    },
+    {
+     "id": "d",
+     "text": "100 m/s"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "omitted_term",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Equated mgh to v directly: 50.",
+     "student_note": "Energy equates to ½mv² — the square root matters."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_conservation",
+     "severity": "SLIP",
+     "explanation": "Halved to 5.",
+     "student_note": "√100 = 10. Check the root."
+    },
+    "d": {
+     "tag": "unit_conversion",
+     "concept_id": "wep_conservation",
+     "severity": "SLIP",
+     "explanation": "Used 2gh = 100 as speed.",
+     "student_note": "2gh is v², not v."
+    }
+   },
+   "check": {
+    "expr": "(2*10*5)**0.5",
+    "expected": 10,
+    "tol": 0.1
+   }
+  },
+  {
+   "id": "wep_t06",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_power",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "An engine does 6000 J in 30 s. Power?",
+   "solution_steps": [
+    "P = W/t.",
+    "P = 200 W."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "200 W"
+    },
+    {
+     "id": "b",
+     "text": "180000 W"
+    },
+    {
+     "id": "c",
+     "text": "6030 W"
+    },
+    {
+     "id": "d",
+     "text": "0.005 W"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "wep_power",
+     "severity": "PARTIAL",
+     "explanation": "Multiplied W·t.",
+     "student_note": "Power divides work by time."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_power",
+     "severity": "SLIP",
+     "explanation": "Added 6000 + 30.",
+     "student_note": "Power is a rate — divide."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_power",
+     "severity": "SLIP",
+     "explanation": "Inverted to 30/6000.",
+     "student_note": "Work over time: 6000/30."
+    }
+   },
+   "check": {
+    "expr": "6000/30",
+    "expected": 200,
+    "tol": 1
+   }
+  },
+  {
+   "id": "wep_t07",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_energy_theorem",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "A 0.5 kg ball at 8 m/s doubles its speed. Net work done on it?",
+   "solution_steps": [
+    "W = ½m(v² − u²) = 0.25·(256 − 64).",
+    "W = 48 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "48 J"
+    },
+    {
+     "id": "b",
+     "text": "16 J"
+    },
+    {
+     "id": "c",
+     "text": "24 J"
+    },
+    {
+     "id": "d",
+     "text": "64 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "wep_energy_theorem",
+     "severity": "PARTIAL",
+     "explanation": "Used ½m(v−u)² = 16.",
+     "student_note": "Square first, then subtract: v² − u²."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "wep_energy_theorem",
+     "severity": "PARTIAL",
+     "explanation": "Used m(v²−u²) without ½: 96? no — 24 suggests half of 48 via u² only.",
+     "student_note": "Both speeds count: ½m(v² − u²)."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_energy_theorem",
+     "severity": "SLIP",
+     "explanation": "Arithmetic landing on 64.",
+     "student_note": "0.25·192 = 48. One line at a time."
+    }
+   },
+   "check": {
+    "expr": "0.5*0.5*(256-64)",
+    "expected": 48,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "wep_t08",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_work",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Force 5 N pulls at 60° to the direction of motion over 10 m. Work?",
+   "solution_steps": [
+    "W = 5·10·cos60° = 50·0.5.",
+    "W = 25 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "25 J"
+    },
+    {
+     "id": "b",
+     "text": "50 J"
+    },
+    {
+     "id": "c",
+     "text": "43.3 J"
+    },
+    {
+     "id": "d",
+     "text": "−25 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "omitted_term",
+     "concept_id": "wep_work",
+     "severity": "PARTIAL",
+     "explanation": "Used F·s = 50, dropping cosθ.",
+     "student_note": "The angle term cos60° = 0.5 still multiplies."
+    },
+    "c": {
+     "tag": "vector_vs_scalar",
+     "concept_id": "wep_work",
+     "severity": "PARTIAL",
+     "explanation": "Used sin60° instead of cos.",
+     "student_note": "Work uses cos of the angle with motion."
+    },
+    "d": {
+     "tag": "sign_convention",
+     "concept_id": "wep_work",
+     "severity": "SLIP",
+     "explanation": "Negated at 60°.",
+     "student_note": "cos60° is positive — work is +25 J."
+    }
+   },
+   "check": {
+    "expr": "5*10*0.5",
+    "expected": 25,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "wep_t09",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_power",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A motor lifts 100 N at 2 m/s. Power delivered?",
+   "solution_steps": [
+    "P = F·v.",
+    "P = 200 W."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "200 W"
+    },
+    {
+     "id": "b",
+     "text": "50 W"
+    },
+    {
+     "id": "c",
+     "text": "102 W"
+    },
+    {
+     "id": "d",
+     "text": "400 W"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "wep_power",
+     "severity": "PARTIAL",
+     "explanation": "Divided 100/2.",
+     "student_note": "Power multiplies force by velocity."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_power",
+     "severity": "SLIP",
+     "explanation": "Added 100 + 2.",
+     "student_note": "P = F·v is multiplication."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_power",
+     "severity": "SLIP",
+     "explanation": "Doubled to 400.",
+     "student_note": "100·2 = 200. Check the product."
+    }
+   },
+   "check": {
+    "expr": "100*2",
+    "expected": 200,
+    "tol": 1
+   }
+  },
+  {
+   "id": "wep_t10",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_conservation",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Which situation conserves mechanical energy?",
+   "solution_steps": [
+    "Need no non-conservative work.",
+    "Smooth swing, no friction: yes."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Smooth swing, no friction"
+    },
+    {
+     "id": "b",
+     "text": "Car braking to a halt"
+    },
+    {
+     "id": "c",
+     "text": "Block sliding on rough floor"
+    },
+    {
+     "id": "d",
+     "text": "Ball bouncing with a thud"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Ignored brake friction.",
+     "student_note": "Brakes convert motion to heat — not conserved."
+    },
+    "c": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Ignored floor friction.",
+     "student_note": "Rough floor drains mechanical energy."
+    },
+    "d": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Ignored thud losses.",
+     "student_note": "A thud means energy left as sound/heat."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "wep_p01",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_work",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A 8 N push moves a crate 5 m along the push. Work?",
+   "solution_steps": [
+    "W = F·s.",
+    "W = 40 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "40 J"
+    },
+    {
+     "id": "b",
+     "text": "13 J"
+    },
+    {
+     "id": "c",
+     "text": "1.6 J"
+    },
+    {
+     "id": "d",
+     "text": "45 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_work",
+     "severity": "SLIP",
+     "explanation": "Added 8 + 5.",
+     "student_note": "Work multiplies: 8·5."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_work",
+     "severity": "SLIP",
+     "explanation": "Divided 8/5.",
+     "student_note": "Multiply force by distance."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "wep_work",
+     "severity": "SLIP",
+     "explanation": "Guessed near 40.",
+     "student_note": "Compute exactly: 8·5 = 40."
+    }
+   },
+   "check": {
+    "expr": "8*5",
+    "expected": 40,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "wep_p02",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_energy_theorem",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A 4 kg cart at 3 m/s is pushed until it reaches 5 m/s. Net work?",
+   "solution_steps": [
+    "W = ½·4·(25 − 9).",
+    "W = 32 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "32 J"
+    },
+    {
+     "id": "b",
+     "text": "8 J"
+    },
+    {
+     "id": "c",
+     "text": "50 J"
+    },
+    {
+     "id": "d",
+     "text": "18 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "wep_energy_theorem",
+     "severity": "PARTIAL",
+     "explanation": "Used ½m(v−u)² = 8.",
+     "student_note": "Square each speed first, then subtract."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "wep_energy_theorem",
+     "severity": "PARTIAL",
+     "explanation": "Used ½mv² final only: 50.",
+     "student_note": "Subtract the starting KE too."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_energy_theorem",
+     "severity": "SLIP",
+     "explanation": "Used ½·4·9 = 18 (initial KE).",
+     "student_note": "18 J is where it started — work is the change: 32 J."
+    }
+   },
+   "check": {
+    "expr": "0.5*4*(25-9)",
+    "expected": 32,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "wep_p03",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_conservation",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A pendulum swings in vacuum with no friction at the pivot. Mechanical energy?",
+   "solution_steps": [
+    "No non-conservative work acts.",
+    "Conserved."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Conserved"
+    },
+    {
+     "id": "b",
+     "text": "Keeps increasing"
+    },
+    {
+     "id": "c",
+     "text": "Keeps decreasing"
+    },
+    {
+     "id": "d",
+     "text": "Zero throughout"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Thought motion creates energy.",
+     "student_note": "Motion converts energy; nothing adds it here."
+    },
+    "c": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Assumed drains without friction.",
+     "student_note": "Nothing drains it here — no friction, no air."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "wep_conservation",
+     "severity": "SLIP",
+     "explanation": "Confused conserved with zero.",
+     "student_note": "Conserved means constant, not zero."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "wep_p04",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_conservation",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A 3 kg block slides down a smooth 4 m-high ramp (g = 10). Speed at bottom?",
+   "solution_steps": [
+    "mgh = ½mv².",
+    "v = √(2·10·4) ≈ 8.94 m/s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "8.94 m/s"
+    },
+    {
+     "id": "b",
+     "text": "120 m/s"
+    },
+    {
+     "id": "c",
+     "text": "4 m/s"
+    },
+    {
+     "id": "d",
+     "text": "12.6 m/s"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Equated mgh to v directly.",
+     "student_note": "Energy equates to ½mv² — the root matters."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "wep_conservation",
+     "severity": "SLIP",
+     "explanation": "Answered with height.",
+     "student_note": "4 m is the drop, not the speed."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_conservation",
+     "severity": "SLIP",
+     "explanation": "Used √(2·10·8)? landing 12.6.",
+     "student_note": "2·10·4 = 80; √80 ≈ 8.94."
+    }
+   },
+   "check": {
+    "expr": "(2*10*4)**0.5",
+    "expected": 8.94,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "wep_p05",
+   "topic_id": "work_energy_power",
+   "concept_id": "units_and_dimensions",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Which unit equals one joule?",
+   "solution_steps": [
+    "Joule = newton·metre.",
+    "N·m."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "N·m"
+    },
+    {
+     "id": "b",
+     "text": "N/s"
+    },
+    {
+     "id": "c",
+     "text": "kg·m/s"
+    },
+    {
+     "id": "d",
+     "text": "W·s²"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Picked N/s.",
+     "student_note": "Per second is a rate — joule is force times distance."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Picked momentum units.",
+     "student_note": "kg·m/s is momentum, not energy."
+    },
+    "d": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Picked W·s².",
+     "student_note": "W·s is a joule; extra s breaks it."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "wep_p06",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_conservation",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A 2 kg block glides on smooth ice at steady 3 m/s. Mechanical energy?",
+   "solution_steps": [
+    "No friction means no drain.",
+    "Stays constant."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Stays constant"
+    },
+    {
+     "id": "b",
+     "text": "Keeps growing"
+    },
+    {
+     "id": "c",
+     "text": "Keeps shrinking"
+    },
+    {
+     "id": "d",
+     "text": "Becomes zero"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Thought motion creates energy.",
+     "student_note": "Motion converts energy; smooth ice adds none."
+    },
+    "c": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Assumed drains without friction.",
+     "student_note": "Nothing drains it on smooth ice."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "wep_conservation",
+     "severity": "SLIP",
+     "explanation": "Confused conserved with zero.",
+     "student_note": "Conserved means constant, not zero."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "elec_t01",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_ohm",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A 6 V battery drives 2 A through a resistor. Resistance?",
+   "solution_steps": [
+    "V = IR.",
+    "R = 6/2 = 3 Ω."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "3 Ω"
+    },
+    {
+     "id": "b",
+     "text": "12 Ω"
+    },
+    {
+     "id": "c",
+     "text": "0.33 Ω"
+    },
+    {
+     "id": "d",
+     "text": "8 Ω"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_ohm",
+     "severity": "PARTIAL",
+     "explanation": "Multiplied V·I.",
+     "student_note": "Resistance divides voltage by current."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_ohm",
+     "severity": "SLIP",
+     "explanation": "Inverted to 2/6.",
+     "student_note": "V over I: 6/2 = 3."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_ohm",
+     "severity": "SLIP",
+     "explanation": "Added 6 + 2.",
+     "student_note": "Ohm's law divides here."
+    }
+   },
+   "check": {
+    "expr": "6/2",
+    "expected": 3,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "elec_t02",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_series_parallel",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Two 6 Ω resistors in parallel. Equivalent resistance?",
+   "solution_steps": [
+    "1/R = 1/6 + 1/6 = 1/3.",
+    "R = 3 Ω."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "3 Ω"
+    },
+    {
+     "id": "b",
+     "text": "12 Ω"
+    },
+    {
+     "id": "c",
+     "text": "6 Ω"
+    },
+    {
+     "id": "d",
+     "text": "36 Ω"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_series_parallel",
+     "severity": "PARTIAL",
+     "explanation": "Added as series: 12 Ω.",
+     "student_note": "Parallel combines by reciprocals — check which rules apply."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_series_parallel",
+     "severity": "PARTIAL",
+     "explanation": "Kept one resistor's value.",
+     "student_note": "Two paths conduct better than one: less than 6 Ω."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_series_parallel",
+     "severity": "SLIP",
+     "explanation": "Multiplied 6·6.",
+     "student_note": "Resistors combine, not multiply, here."
+    }
+   },
+   "check": {
+    "expr": "1/(1/6+1/6)",
+    "expected": 3,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "elec_t03",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_series_parallel",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Two 4 Ω resistors in series. Equivalent resistance?",
+   "solution_steps": [
+    "Series adds directly.",
+    "R = 8 Ω."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "8 Ω"
+    },
+    {
+     "id": "b",
+     "text": "2 Ω"
+    },
+    {
+     "id": "c",
+     "text": "4 Ω"
+    },
+    {
+     "id": "d",
+     "text": "16 Ω"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_series_parallel",
+     "severity": "PARTIAL",
+     "explanation": "Used the parallel rule: 2 Ω.",
+     "student_note": "Series is the simple sum — save reciprocals for parallel."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "cur_series_parallel",
+     "severity": "SLIP",
+     "explanation": "Repeated one value.",
+     "student_note": "Two resistors both count."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_series_parallel",
+     "severity": "SLIP",
+     "explanation": "Multiplied 4·4.",
+     "student_note": "Series adds: 4 + 4."
+    }
+   },
+   "check": {
+    "expr": "4+4",
+    "expected": 8,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "elec_t04",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_power_heating",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A 2 A current flows through 5 Ω. Heating power?",
+   "solution_steps": [
+    "P = I²R.",
+    "P = 4·5 = 20 W."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "20 W"
+    },
+    {
+     "id": "b",
+     "text": "10 W"
+    },
+    {
+     "id": "c",
+     "text": "50 W"
+    },
+    {
+     "id": "d",
+     "text": "0.4 W"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "omitted_term",
+     "concept_id": "cur_power_heating",
+     "severity": "PARTIAL",
+     "explanation": "Used I·R = 10 (a voltage).",
+     "student_note": "I·R is voltage; power squares the current: I²R."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_power_heating",
+     "severity": "PARTIAL",
+     "explanation": "Used I·R² = 50.",
+     "student_note": "Resistance is not squared — current is."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_power_heating",
+     "severity": "SLIP",
+     "explanation": "Divided 2/5.",
+     "student_note": "Multiply: 4·5 = 20."
+    }
+   },
+   "check": {
+    "expr": "4*5",
+    "expected": 20,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "elec_t05",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_kirchhoff",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "Going clockwise round a loop, you pass a battery from − to +. The potential change is?",
+   "solution_steps": [
+    "− to + is a rise.",
+    "+V (gain)."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "+V (rise)"
+    },
+    {
+     "id": "b",
+     "text": "−V (drop)"
+    },
+    {
+     "id": "c",
+     "text": "Zero"
+    },
+    {
+     "id": "d",
+     "text": "+2V"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "cur_kirchhoff",
+     "severity": "PARTIAL",
+     "explanation": "Flipped the traversal sign.",
+     "student_note": "− to + gains potential. Bridge: mark +/− at each crossing."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "cur_kirchhoff",
+     "severity": "SLIP",
+     "explanation": "Claimed no change crossing a battery.",
+     "student_note": "Crossing a battery always changes potential."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_kirchhoff",
+     "severity": "SLIP",
+     "explanation": "Doubled to 2V.",
+     "student_note": "One crossing, one V."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "elec_t06",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_ohm",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "An ammeter reads 250 mA through 10 Ω. Voltage across it?",
+   "solution_steps": [
+    "Convert: 250 mA = 0.25 A.",
+    "V = 0.25·10 = 2.5 V."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "2.5 V"
+    },
+    {
+     "id": "b",
+     "text": "2500 V"
+    },
+    {
+     "id": "c",
+     "text": "25 V"
+    },
+    {
+     "id": "d",
+     "text": "0.25 V"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "cur_ohm",
+     "severity": "PARTIAL",
+     "explanation": "Used 250 A directly: 2500 V.",
+     "student_note": "mA → A first: 250 mA = 0.25 A."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "cur_ohm",
+     "severity": "SLIP",
+     "explanation": "Partial conversion giving 25 V.",
+     "student_note": "Three zeros in milli: 0.25 A, so 2.5 V."
+    },
+    "d": {
+     "tag": "omitted_term",
+     "concept_id": "cur_ohm",
+     "severity": "SLIP",
+     "explanation": "Answered with current only.",
+     "student_note": "Multiply by 10 Ω to get voltage."
+    }
+   },
+   "check": {
+    "expr": "0.25*10",
+    "expected": 2.5,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "elec_t07",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_series_parallel",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "A 12 V battery across a parallel pair (4 Ω, 4 Ω). Total current?",
+   "solution_steps": [
+    "R_eq = 2 Ω.",
+    "I = 12/2 = 6 A."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "6 A"
+    },
+    {
+     "id": "b",
+     "text": "3 A"
+    },
+    {
+     "id": "c",
+     "text": "1.5 A"
+    },
+    {
+     "id": "d",
+     "text": "24 A"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_series_parallel",
+     "severity": "PARTIAL",
+     "explanation": "Treated as series: 12/8 then halved? 3 A.",
+     "student_note": "Parallel halves resistance first: R = 2 Ω."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_series_parallel",
+     "severity": "SLIP",
+     "explanation": "Divided 12/8.",
+     "student_note": "8 Ω is the series value — this pair is parallel."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_series_parallel",
+     "severity": "SLIP",
+     "explanation": "Multiplied 12·2.",
+     "student_note": "Current is V/R: 12/2."
+    }
+   },
+   "check": {
+    "expr": "12/2",
+    "expected": 6,
+    "tol": 0.1
+   }
+  },
+  {
+   "id": "elec_t08",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_power_heating",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A bulb draws 0.5 A at 220 V. Power?",
+   "solution_steps": [
+    "P = VI.",
+    "P = 110 W."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "110 W"
+    },
+    {
+     "id": "b",
+     "text": "440 W"
+    },
+    {
+     "id": "c",
+     "text": "220.5 W"
+    },
+    {
+     "id": "d",
+     "text": "0.11 W"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_power_heating",
+     "severity": "PARTIAL",
+     "explanation": "Used V/I·? 440.",
+     "student_note": "Power multiplies V by I."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_power_heating",
+     "severity": "SLIP",
+     "explanation": "Added 220 + 0.5.",
+     "student_note": "P = VI is multiplication."
+    },
+    "d": {
+     "tag": "unit_conversion",
+     "concept_id": "cur_power_heating",
+     "severity": "SLIP",
+     "explanation": "Divided by 1000 unnecessarily.",
+     "student_note": "No kilo conversion needed: 0.5·220 = 110."
+    }
+   },
+   "check": {
+    "expr": "0.5*220",
+    "expected": 110,
+    "tol": 1
+   }
+  },
+  {
+   "id": "elec_t09",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_kirchhoff",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "An ideal voltmeter is connected across a resistor. It draws?",
+   "solution_steps": [
+    "Ideal voltmeter has infinite resistance.",
+    "Current drawn ≈ 0."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Almost zero current"
+    },
+    {
+     "id": "b",
+     "text": "The full circuit current"
+    },
+    {
+     "id": "c",
+     "text": "Double current"
+    },
+    {
+     "id": "d",
+     "text": "It shorts the resistor"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "cur_kirchhoff",
+     "severity": "PARTIAL",
+     "explanation": "Missed 'ideal' meaning infinite resistance.",
+     "student_note": "'Ideal' voltmeter draws (almost) nothing — that is the point."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "cur_kirchhoff",
+     "severity": "SLIP",
+     "explanation": "Claimed double current.",
+     "student_note": "Nothing doubles here — reread the meter type."
+    },
+    "d": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_kirchhoff",
+     "severity": "PARTIAL",
+     "explanation": "Confused voltmeter with ammeter.",
+     "student_note": "Ammeters go in series; voltmeters sit across."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "elec_t10",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_series_parallel",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Three identical bulbs in series; one fuses (opens). The others?",
+   "solution_steps": [
+    "Series is a single loop.",
+    "Open loop means all go off."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "All go off"
+    },
+    {
+     "id": "b",
+     "text": "Others glow brighter"
+    },
+    {
+     "id": "c",
+     "text": "Others stay same"
+    },
+    {
+     "id": "d",
+     "text": "Others dim slightly"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_series_parallel",
+     "severity": "PARTIAL",
+     "explanation": "Applied parallel intuition.",
+     "student_note": "That happens in parallel. Series is one loop — open means dark."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_series_parallel",
+     "severity": "PARTIAL",
+     "explanation": "Claimed independence (parallel behaviour).",
+     "student_note": "Independence is a parallel trait."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "cur_series_parallel",
+     "severity": "SLIP",
+     "explanation": "Claimed dimming.",
+     "student_note": "No current at all flows — fully off."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "elec_p01",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_series_parallel",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Two 10 Ω resistors in series, then that pair in parallel with another 10 Ω. R_eq?",
+   "solution_steps": [
+    "Series pair = 20 Ω; parallel with 10 Ω.",
+    "R = (20·10)/30 ≈ 6.67 Ω."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "6.67 Ω"
+    },
+    {
+     "id": "b",
+     "text": "30 Ω"
+    },
+    {
+     "id": "c",
+     "text": "10 Ω"
+    },
+    {
+     "id": "d",
+     "text": "3.33 Ω"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_series_parallel",
+     "severity": "PARTIAL",
+     "explanation": "Added all three.",
+     "student_note": "Combine stage by stage: series first, then parallel."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "cur_series_parallel",
+     "severity": "SLIP",
+     "explanation": "Repeated one value.",
+     "student_note": "All three resistors count."
+    },
+    "d": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_series_parallel",
+     "severity": "PARTIAL",
+     "explanation": "Put all three in parallel.",
+     "student_note": "Two are in series with each other first."
+    }
+   },
+   "check": {
+    "expr": "20*10/30",
+    "expected": 6.67,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "elec_p02",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_kirchhoff",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Loop: +12 V battery, then drops of 4 V and 5 V across two resistors. Third drop?",
+   "solution_steps": [
+    "Loop sums to zero: 12 − 4 − 5 − x = 0.",
+    "x = 3 V."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "3 V"
+    },
+    {
+     "id": "b",
+     "text": "12 V"
+    },
+    {
+     "id": "c",
+     "text": "9 V"
+    },
+    {
+     "id": "d",
+     "text": "1 V"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "cur_kirchhoff",
+     "severity": "PARTIAL",
+     "explanation": "Ignored drops, repeated 12 V.",
+     "student_note": "Drops subtract from the rise — walk the loop with signs."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_kirchhoff",
+     "severity": "SLIP",
+     "explanation": "Added 4 + 5 only.",
+     "student_note": "12 − 9 = 3. Finish the loop."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_kirchhoff",
+     "severity": "SLIP",
+     "explanation": "Arithmetic landing on 1.",
+     "student_note": "12 − 4 − 5 = 3."
+    }
+   },
+   "check": {
+    "expr": "12-4-5",
+    "expected": 3,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "elec_p03",
+   "topic_id": "current_electricity",
+   "concept_id": "units_and_dimensions",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Convert 0.02 A to mA.",
+   "solution_steps": [
+    "1 A = 1000 mA.",
+    "0.02·1000 = 20 mA."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "20 mA"
+    },
+    {
+     "id": "b",
+     "text": "0.00002 mA"
+    },
+    {
+     "id": "c",
+     "text": "200 mA"
+    },
+    {
+     "id": "d",
+     "text": "2 mA"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Divided by 1000.",
+     "student_note": "Milli is smaller, so the number grows: ×1000."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Multiplied by 10000.",
+     "student_note": "Three zeros: ×1000 exactly."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Moved one decimal.",
+     "student_note": "0.02·1000 = 20."
+    }
+   },
+   "check": {
+    "expr": "0.02*1000",
+    "expected": 20,
+    "tol": 0.1
+   }
+  },
+  {
+   "id": "elec_p04",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_power_heating",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A heater (100 Ω) runs on 200 V for 5 s. Heat produced?",
+   "solution_steps": [
+    "P = V²/R = 400 W.",
+    "H = 400·5 = 2000 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "2000 J"
+    },
+    {
+     "id": "b",
+     "text": "400 J"
+    },
+    {
+     "id": "c",
+     "text": "10000 J"
+    },
+    {
+     "id": "d",
+     "text": "40 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "omitted_term",
+     "concept_id": "cur_power_heating",
+     "severity": "PARTIAL",
+     "explanation": "Answered with power only.",
+     "student_note": "400 W is the rate; ×5 s gives energy."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_power_heating",
+     "severity": "PARTIAL",
+     "explanation": "Used V·R·t.",
+     "student_note": "Power here is V²/R, not V·R."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_power_heating",
+     "severity": "SLIP",
+     "explanation": "Divided 200/5.",
+     "student_note": "Energy multiplies power by time."
+    }
+   },
+   "check": {
+    "expr": "400*5",
+    "expected": 2000,
+    "tol": 5
+   }
+  },
+  {
+   "id": "elec_p05",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_ohm",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "V = 9 V, R = 3 Ω. Current?",
+   "solution_steps": [
+    "I = V/R.",
+    "I = 3 A."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "3 A"
+    },
+    {
+     "id": "b",
+     "text": "27 A"
+    },
+    {
+     "id": "c",
+     "text": "12 A"
+    },
+    {
+     "id": "d",
+     "text": "0.33 A"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "cur_ohm",
+     "severity": "PARTIAL",
+     "explanation": "Multiplied 9·3.",
+     "student_note": "Current divides V by R."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_ohm",
+     "severity": "SLIP",
+     "explanation": "Added 9 + 3.",
+     "student_note": "Ohm's law divides here."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "cur_ohm",
+     "severity": "SLIP",
+     "explanation": "Inverted to 3/9.",
+     "student_note": "V over R: 9/3."
+    }
+   },
+   "check": {
+    "expr": "9/3",
+    "expected": 3,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "elec_p06",
+   "topic_id": "current_electricity",
+   "concept_id": "cur_kirchhoff",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "An ideal wire connects two points in a circuit. Voltage between them?",
+   "solution_steps": [
+    "Ideal wire has zero resistance.",
+    "V = IR = 0."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "0 V"
+    },
+    {
+     "id": "b",
+     "text": "Equal to battery EMF"
+    },
+    {
+     "id": "c",
+     "text": "Half the EMF"
+    },
+    {
+     "id": "d",
+     "text": "Cannot tell"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "cur_kirchhoff",
+     "severity": "PARTIAL",
+     "explanation": "Missed 'ideal' (R = 0).",
+     "student_note": "'Ideal' wire means no drop: 0 V."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "cur_kirchhoff",
+     "severity": "SLIP",
+     "explanation": "Guessed half.",
+     "student_note": "No splitting here — zero resistance, zero drop."
+    },
+    "d": {
+     "tag": "implicit_condition",
+     "concept_id": "cur_kirchhoff",
+     "severity": "SLIP",
+     "explanation": "Claimed indeterminable.",
+     "student_note": "'Ideal' fully determines it: 0 V."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_t01",
+   "topic_id": "optics",
+   "concept_id": "opt_sign_convention",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Cartesian convention: object is 20 cm in front of a mirror. Object distance u?",
+   "solution_steps": [
+    "Distances in front are negative.",
+    "u = −20 cm."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "−20 cm"
+    },
+    {
+     "id": "b",
+     "text": "+20 cm"
+    },
+    {
+     "id": "c",
+     "text": "0 cm"
+    },
+    {
+     "id": "d",
+     "text": "+40 cm"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "opt_sign_convention",
+     "severity": "SYSTEMIC",
+     "explanation": "Took 'in front' as positive.",
+     "student_note": "In front of the mirror is the negative side here."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "opt_sign_convention",
+     "severity": "SLIP",
+     "explanation": "Answered zero.",
+     "student_note": "Zero is the pole, not the object."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "opt_sign_convention",
+     "severity": "SLIP",
+     "explanation": "Doubled to 40.",
+     "student_note": "No doubling — just attach the sign: −20 cm."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_t02",
+   "topic_id": "optics",
+   "concept_id": "opt_mirror_lens",
+   "difficulty": 2,
+   "expected_time_sec": 75,
+   "text": "Concave mirror, f = −10 cm, object at u = −30 cm. Image distance v?",
+   "solution_steps": [
+    "1/f = 1/v − 1/u → −1/10 = 1/v + 1/30.",
+    "1/v = −4/30 → v = −7.5 cm."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "−7.5 cm"
+    },
+    {
+     "id": "b",
+     "text": "+7.5 cm"
+    },
+    {
+     "id": "c",
+     "text": "−15 cm"
+    },
+    {
+     "id": "d",
+     "text": "−30 cm"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Dropped signs mid-formula.",
+     "student_note": "Carry every minus through the algebra."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Used f = +10 (convex value).",
+     "student_note": "Concave f is negative here — the sign picks the formula's behaviour."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Repeated object distance.",
+     "student_note": "Compute 1/v — don't echo u."
+    }
+   },
+   "check": {
+    "expr": "1/(-1/10-1/30)",
+    "expected": -7.5,
+    "tol": 0.1
+   }
+  },
+  {
+   "id": "opt_t03",
+   "topic_id": "optics",
+   "concept_id": "opt_mirror_lens",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A convex lens forms an image. A student uses the mirror formula with R signs. This is?",
+   "solution_steps": [
+    "Lenses and mirrors have different sign maps.",
+    "Use the lens formula for lenses."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "A lens/mirror mix-up"
+    },
+    {
+     "id": "b",
+     "text": "Correct approach"
+    },
+    {
+     "id": "c",
+     "text": "Just a sign slip"
+    },
+    {
+     "id": "d",
+     "text": "A unit issue"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Endorsed the mix-up.",
+     "student_note": "Mirror rules don't transfer to lenses — pick by device."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Reduced it to signs.",
+     "student_note": "The formula choice itself is the gap, not just signs."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Blamed units.",
+     "student_note": "Units are fine — the formula choice is the point."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_t04",
+   "topic_id": "optics",
+   "concept_id": "opt_mirror_lens",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "m = −2 for a mirror image. The image is?",
+   "solution_steps": [
+    "Negative m inverts.",
+    "Real, inverted, enlarged."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Real, inverted, enlarged"
+    },
+    {
+     "id": "b",
+     "text": "Virtual, erect, enlarged"
+    },
+    {
+     "id": "c",
+     "text": "Real, erect, enlarged"
+    },
+    {
+     "id": "d",
+     "text": "Virtual, inverted, diminished"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Read − as virtual-erect.",
+     "student_note": "Minus means inverted (real) here; plus means erect."
+    },
+    "c": {
+     "tag": "sign_convention",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Mixed erect with negative.",
+     "student_note": "Negative and erect never pair — recheck the sign map."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Misread |m| = 2 as diminished.",
+     "student_note": "|m| = 2 enlarges."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_t05",
+   "topic_id": "optics",
+   "concept_id": "opt_refraction",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Light goes air (n=1) → glass (n=1.5) at 30° to the normal. sin(r)?",
+   "solution_steps": [
+    "Snell: 1·sin30° = 1.5·sin r.",
+    "sin r = 0.5/1.5 ≈ 0.333."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "0.333"
+    },
+    {
+     "id": "b",
+     "text": "0.75"
+    },
+    {
+     "id": "c",
+     "text": "0.5"
+    },
+    {
+     "id": "d",
+     "text": "1.5"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "opt_refraction",
+     "severity": "PARTIAL",
+     "explanation": "Inverted Snell: 1.5·0.5.",
+     "student_note": "Denser medium bends toward normal — sin r is smaller: divide."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "opt_refraction",
+     "severity": "PARTIAL",
+     "explanation": "Kept sin30° unchanged.",
+     "student_note": "The n = 1.5 still divides."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_refraction",
+     "severity": "SLIP",
+     "explanation": "Answered with n.",
+     "student_note": "1.5 is the index, not the sine."
+    }
+   },
+   "check": {
+    "expr": "0.5/1.5",
+    "expected": 0.333,
+    "tol": 0.01
+   }
+  },
+  {
+   "id": "opt_t06",
+   "topic_id": "optics",
+   "concept_id": "opt_tir",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "When can total internal reflection occur?",
+   "solution_steps": [
+    "Needs denser → rarer.",
+    "Plus incidence beyond critical angle."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Denser to rarer, beyond critical angle"
+    },
+    {
+     "id": "b",
+     "text": "Rarer to denser, any angle"
+    },
+    {
+     "id": "c",
+     "text": "Denser to rarer, any angle"
+    },
+    {
+     "id": "d",
+     "text": "Always at any interface"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "opt_tir",
+     "severity": "PARTIAL",
+     "explanation": "Reversed the media order.",
+     "student_note": "TIR only goes denser → rarer."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "opt_tir",
+     "severity": "PARTIAL",
+     "explanation": "Dropped the critical-angle condition.",
+     "student_note": "Small angles still refract — past critical is the trigger."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_tir",
+     "severity": "SLIP",
+     "explanation": "Claimed always.",
+     "student_note": "Two conditions gate TIR — media order plus angle."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_t07",
+   "topic_id": "optics",
+   "concept_id": "opt_mirror_lens",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "Convex mirror, f = +15 cm, object at u = −20 cm (Cartesian signs). Image distance v?",
+   "solution_steps": [
+    "Mirror formula: 1/v + 1/u = 1/f.",
+    "1/v = 1/15 + 1/20 = 7/60 → v ≈ +8.57 cm (virtual, behind mirror)."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "+8.57 cm"
+    },
+    {
+     "id": "b",
+     "text": "−8.57 cm"
+    },
+    {
+     "id": "c",
+     "text": "+60 cm"
+    },
+    {
+     "id": "d",
+     "text": "−60 cm"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Negated the virtual image distance.",
+     "student_note": "Behind-mirror images are positive here."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Stopped at the denominator 60.",
+     "student_note": "7/60 inverts to 60/7 ≈ 8.57."
+    },
+    "d": {
+     "tag": "sign_convention",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Negated and skipped inversion.",
+     "student_note": "Two slips in one — sign and reciprocal. One line at a time."
+    }
+   },
+   "check": {
+    "expr": "1/(1/15+1/20)",
+    "expected": 8.57,
+    "tol": 0.1
+   }
+  },
+  {
+   "id": "opt_t08",
+   "topic_id": "optics",
+   "concept_id": "opt_refraction",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Light enters water (denser). It bends?",
+   "solution_steps": [
+    "Denser pulls toward the normal.",
+    "Toward the normal."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Toward the normal"
+    },
+    {
+     "id": "b",
+     "text": "Away from the normal"
+    },
+    {
+     "id": "c",
+     "text": "Back on itself"
+    },
+    {
+     "id": "d",
+     "text": "Not at all"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "opt_refraction",
+     "severity": "PARTIAL",
+     "explanation": "Applied rarer-side behaviour.",
+     "student_note": "Denser means toward normal."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "opt_refraction",
+     "severity": "SLIP",
+     "explanation": "Claimed reflection.",
+     "student_note": "It still enters — bent, not bounced."
+    },
+    "d": {
+     "tag": "implicit_condition",
+     "concept_id": "opt_refraction",
+     "severity": "SLIP",
+     "explanation": "Claimed no bending.",
+     "student_note": "Only normal incidence goes straight."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_t09",
+   "topic_id": "optics",
+   "concept_id": "opt_sign_convention",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A real image forms 30 cm in front of a mirror. v?",
+   "solution_steps": [
+    "Front is the negative side.",
+    "v = −30 cm."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "−30 cm"
+    },
+    {
+     "id": "b",
+     "text": "+30 cm"
+    },
+    {
+     "id": "c",
+     "text": "−60 cm"
+    },
+    {
+     "id": "d",
+     "text": "0 cm"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "opt_sign_convention",
+     "severity": "PARTIAL",
+     "explanation": "Took real as positive.",
+     "student_note": "Real = in front = negative side here."
+    },
+    "c": {
+     "tag": "arithmetic_slip",
+     "concept_id": "opt_sign_convention",
+     "severity": "SLIP",
+     "explanation": "Doubled to 60.",
+     "student_note": "No doubling — just the sign: −30 cm."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_sign_convention",
+     "severity": "SLIP",
+     "explanation": "Answered zero.",
+     "student_note": "Zero is the pole."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_t10",
+   "topic_id": "optics",
+   "concept_id": "opt_mirror_lens",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A lens question asks for image distance, but an option gives m = +0.5. Picking it means?",
+   "solution_steps": [
+    "Magnification is not a distance.",
+    "Compute v from the formula."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Compute v — m is not a distance"
+    },
+    {
+     "id": "b",
+     "text": "m = +0.5 is the distance"
+    },
+    {
+     "id": "c",
+     "text": "v = +0.5 cm always"
+    },
+    {
+     "id": "d",
+     "text": "Skip — unsolvable"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Answered with magnification.",
+     "student_note": "m has no length units — reread what is asked."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Attached cm to m.",
+     "student_note": "Magnification is unitless."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Gave up.",
+     "student_note": "The data suffices — compute v."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_p01",
+   "topic_id": "optics",
+   "concept_id": "opt_sign_convention",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A virtual image forms behind the mirror. Its v sign?",
+   "solution_steps": [
+    "Behind is the positive side.",
+    "v positive."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Positive"
+    },
+    {
+     "id": "b",
+     "text": "Negative"
+    },
+    {
+     "id": "c",
+     "text": "Zero"
+    },
+    {
+     "id": "d",
+     "text": "Signless"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "opt_sign_convention",
+     "severity": "PARTIAL",
+     "explanation": "Marked virtual as negative.",
+     "student_note": "Behind the mirror is positive here."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "opt_sign_convention",
+     "severity": "SLIP",
+     "explanation": "Answered zero.",
+     "student_note": "Behind means a nonzero distance."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_sign_convention",
+     "severity": "SLIP",
+     "explanation": "Claimed no sign.",
+     "student_note": "Every distance carries a sign here."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_p02",
+   "topic_id": "optics",
+   "concept_id": "opt_mirror_lens",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "f = −20 cm, u = −20 cm (concave). v?",
+   "solution_steps": [
+    "1/v = −1/20 + 1/20 = −1/10? compute: 1/v = 1/f + 1/u = −1/20 − 1/20 = −1/10.",
+    "v = −10 cm."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "−10 cm"
+    },
+    {
+     "id": "b",
+     "text": "+10 cm"
+    },
+    {
+     "id": "c",
+     "text": "−20 cm"
+    },
+    {
+     "id": "d",
+     "text": "−40 cm"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Dropped all minuses.",
+     "student_note": "Keep signs: −1/20 − 1/20 = −1/10."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Echoed u.",
+     "student_note": "Compute 1/v, don't echo."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Doubled to 40.",
+     "student_note": "−1/10 inverts to −10."
+    }
+   },
+   "check": {
+    "expr": "1/(-1/20-1/20)",
+    "expected": -10,
+    "tol": 0.1
+   }
+  },
+  {
+   "id": "opt_p03",
+   "topic_id": "optics",
+   "concept_id": "opt_tir",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Glass → air, incidence 50°, critical 42°. What happens?",
+   "solution_steps": [
+    "Denser to rarer past critical.",
+    "TIR."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Total internal reflection"
+    },
+    {
+     "id": "b",
+     "text": "Normal refraction"
+    },
+    {
+     "id": "c",
+     "text": "Absorption"
+    },
+    {
+     "id": "d",
+     "text": "Nothing"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "opt_tir",
+     "severity": "PARTIAL",
+     "explanation": "Ignored the critical-angle gate.",
+     "student_note": "50° > 42° flips it to TIR."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "opt_tir",
+     "severity": "SLIP",
+     "explanation": "Claimed absorption.",
+     "student_note": "Glass is transparent here — it reflects."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_tir",
+     "severity": "SLIP",
+     "explanation": "Claimed nothing.",
+     "student_note": "Something always happens — here, TIR."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_p04",
+   "topic_id": "optics",
+   "concept_id": "opt_refraction",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "n1 = 1, n2 = 1.33, incidence 45° (sin = 0.707). sin(r)?",
+   "solution_steps": [
+    "sin r = 0.707/1.33.",
+    "sin r ≈ 0.532."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "0.532"
+    },
+    {
+     "id": "b",
+     "text": "0.940"
+    },
+    {
+     "id": "c",
+     "text": "0.707"
+    },
+    {
+     "id": "d",
+     "text": "1.33"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "opt_refraction",
+     "severity": "PARTIAL",
+     "explanation": "Multiplied 0.707·1.33.",
+     "student_note": "Divide by the denser index: 0.707/1.33."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "opt_refraction",
+     "severity": "PARTIAL",
+     "explanation": "Kept 0.707.",
+     "student_note": "The 1.33 still divides."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_refraction",
+     "severity": "SLIP",
+     "explanation": "Answered with n.",
+     "student_note": "1.33 is the index, not the sine."
+    }
+   },
+   "check": {
+    "expr": "0.707/1.33",
+    "expected": 0.532,
+    "tol": 0.01
+   }
+  },
+  {
+   "id": "opt_p05",
+   "topic_id": "optics",
+   "concept_id": "opt_mirror_lens",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A curved-shiny-spoon back (convex) vs front (concave). Image in the back is?",
+   "solution_steps": [
+    "Convex gives virtual, erect, diminished.",
+    "Pick the lens/mirror behaviour by shape."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Virtual, erect, diminished"
+    },
+    {
+     "id": "b",
+     "text": "Real, inverted, enlarged"
+    },
+    {
+     "id": "c",
+     "text": "Real, erect, same size"
+    },
+    {
+     "id": "d",
+     "text": "No image at all"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Applied concave behaviour.",
+     "student_note": "Back of spoon is convex — virtual and diminished."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Claimed real-erect.",
+     "student_note": "Real images invert."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Claimed none.",
+     "student_note": "A small erect image forms."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "opt_p06",
+   "topic_id": "optics",
+   "concept_id": "opt_mirror_lens",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "f = −12 cm, u = −24 cm. v?",
+   "solution_steps": [
+    "1/v = −1/12 + 1/24 = −1/24.",
+    "v = −24 cm."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "−24 cm"
+    },
+    {
+     "id": "b",
+     "text": "+24 cm"
+    },
+    {
+     "id": "c",
+     "text": "−12 cm"
+    },
+    {
+     "id": "d",
+     "text": "−8 cm"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "opt_mirror_lens",
+     "severity": "PARTIAL",
+     "explanation": "Dropped minuses.",
+     "student_note": "Keep signs through the fractions."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Echoed f.",
+     "student_note": "Compute 1/v."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "opt_mirror_lens",
+     "severity": "SLIP",
+     "explanation": "Fraction slip to −8.",
+     "student_note": "−1/12 + 1/24 = −1/24."
+    }
+   },
+   "check": {
+    "expr": "1/(-1/12+1/24)",
+    "expected": -24,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "thm_t01",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_heat_temperature",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Gas temperature rises from 27°C to 327°C. By what factor does absolute temperature grow?",
+   "solution_steps": [
+    "Convert: 300 K → 600 K.",
+    "Factor = 2."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "2×"
+    },
+    {
+     "id": "b",
+     "text": "12.1×"
+    },
+    {
+     "id": "c",
+     "text": "300×"
+    },
+    {
+     "id": "d",
+     "text": "1.1×"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SYSTEMIC",
+     "explanation": "Ratioed Celsius values: 327/27.",
+     "student_note": "Gas laws need Kelvin — convert first, then ratio."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Answered with 300 K itself.",
+     "student_note": "300 K is the start, not the factor."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Added 273 to the ratio wrongly.",
+     "student_note": "600/300 = 2. Check the division."
+    }
+   },
+   "check": {
+    "expr": "600/300",
+    "expected": 2,
+    "tol": 0.01
+   }
+  },
+  {
+   "id": "thm_t02",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 2,
+   "expected_time_sec": 75,
+   "text": "A gas absorbs 500 J of heat and does 200 J of work on the piston. ΔU? (Physics sign: W by system)",
+   "solution_steps": [
+    "ΔU = Q − W.",
+    "ΔU = 500 − 200 = 300 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "+300 J"
+    },
+    {
+     "id": "b",
+     "text": "+700 J"
+    },
+    {
+     "id": "c",
+     "text": "−300 J"
+    },
+    {
+     "id": "d",
+     "text": "+200 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Added work: Q + W.",
+     "student_note": "Work done BY the gas leaves the system — subtract it."
+    },
+    "c": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Flipped both signs.",
+     "student_note": "Heat in is +, work out is −: 500 − 200."
+    },
+    "d": {
+     "tag": "omitted_term",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Answered with work only.",
+     "student_note": "Both Q and W count."
+    }
+   },
+   "check": {
+    "expr": "500-200",
+    "expected": 300,
+    "tol": 1
+   }
+  },
+  {
+   "id": "thm_t03",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "An insulated gas expands quickly with no heat exchange. Temperature?",
+   "solution_steps": [
+    "'No heat exchange' means adiabatic: Q = 0.",
+    "Work drains internal energy, so it cools."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Falls"
+    },
+    {
+     "id": "b",
+     "text": "Rises"
+    },
+    {
+     "id": "c",
+     "text": "Stays same"
+    },
+    {
+     "id": "d",
+     "text": "Zero kelvin"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Missed adiabatic Q = 0 and flipped the effect.",
+     "student_note": "'Insulated, no heat exchange' sets Q = 0 — expansion then cools the gas."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Assumed isothermal behaviour.",
+     "student_note": "Constant temperature needs heat flow; insulated blocks it."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Claimed absolute zero.",
+     "student_note": "Cools, but not to zero."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "thm_t04",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "An ideal gas expands isothermally. ΔU?",
+   "solution_steps": [
+    "Isothermal means constant T.",
+    "Internal energy of an ideal gas depends only on T: ΔU = 0."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Zero"
+    },
+    {
+     "id": "b",
+     "text": "Positive"
+    },
+    {
+     "id": "c",
+     "text": "Negative"
+    },
+    {
+     "id": "d",
+     "text": "Equal to Q"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Missed that isothermal fixes U for ideal gas.",
+     "student_note": "'Isothermal' pins temperature, and U follows temperature."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Assumed expansion drains U at constant T.",
+     "student_note": "Heat flows in to compensate — ΔU stays 0."
+    },
+    "d": {
+     "tag": "formula_misapplication",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Equated ΔU with Q.",
+     "student_note": "Here Q becomes work, not internal energy."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "thm_t05",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 3,
+   "expected_time_sec": 90,
+   "text": "300 J of work is done ON a gas and 100 J of heat leaves it. ΔU?",
+   "solution_steps": [
+    "W on system is +300; heat leaving is −100.",
+    "ΔU = 300 − 100 = +200 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "+200 J"
+    },
+    {
+     "id": "b",
+     "text": "+400 J"
+    },
+    {
+     "id": "c",
+     "text": "−200 J"
+    },
+    {
+     "id": "d",
+     "text": "−400 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Added heat as +: 300 + 100.",
+     "student_note": "Leaving heat is negative: 300 − 100."
+    },
+    "c": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Flipped work sign.",
+     "student_note": "Work done ON the gas adds energy: +300."
+    },
+    "d": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "SYSTEMIC",
+     "explanation": "Flipped both: −300 − 100.",
+     "student_note": "Fix one sign at a time: W on = +, Q out = −."
+    }
+   },
+   "check": {
+    "expr": "300-100",
+    "expected": 200,
+    "tol": 1
+   }
+  },
+  {
+   "id": "thm_t06",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_heat_temperature",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Which statement separates heat from temperature?",
+   "solution_steps": [
+    "Temperature is a state; heat is transfer.",
+    "Pick the transfer statement."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Heat flows because temperatures differ"
+    },
+    {
+     "id": "b",
+     "text": "Heat is stored in hot bodies"
+    },
+    {
+     "id": "c",
+     "text": "Temperature flows like a fluid"
+    },
+    {
+     "id": "d",
+     "text": "Both are the same quantity"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "thm_heat_temperature",
+     "severity": "PARTIAL",
+     "explanation": "Treated heat as stored substance.",
+     "student_note": "Bodies store internal energy; heat is energy in transit."
+    },
+    "c": {
+     "tag": "formula_misapplication",
+     "concept_id": "thm_heat_temperature",
+     "severity": "PARTIAL",
+     "explanation": "Treated temperature as flowing.",
+     "student_note": "Temperature doesn't flow — heat does."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Equated the two.",
+     "student_note": "Different quantities, different units."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "thm_t07",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Gas is compressed quickly (adiabatic). Sign of W (physics: W by system) and ΔU?",
+   "solution_steps": [
+    "Compression: work is done ON gas, so W is negative.",
+    "ΔU = −W > 0: rises."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "W negative, ΔU rises"
+    },
+    {
+     "id": "b",
+     "text": "W positive, ΔU rises"
+    },
+    {
+     "id": "c",
+     "text": "W negative, ΔU falls"
+    },
+    {
+     "id": "d",
+     "text": "W zero, ΔU zero"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Took compression work as positive.",
+     "student_note": "Compression is work ON the gas: W negative, U rises."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Missed adiabatic heating.",
+     "student_note": "Quick insulated squeeze heats the gas."
+    },
+    "d": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Claimed nothing happens.",
+     "student_note": "Volume changed, so work happened."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "thm_t08",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_heat_temperature",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Convert 37°C to Kelvin.",
+   "solution_steps": [
+    "K = °C + 273.",
+    "310 K."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "310 K"
+    },
+    {
+     "id": "b",
+     "text": "37 K"
+    },
+    {
+     "id": "c",
+     "text": "236 K"
+    },
+    {
+     "id": "d",
+     "text": "310°C"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Kept 37.",
+     "student_note": "Add 273 for Kelvin."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Subtracted 273.",
+     "student_note": "Kelvin is larger: add."
+    },
+    "d": {
+     "tag": "unit_conversion",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Kept °C label.",
+     "student_note": "310 needs the K label."
+    }
+   },
+   "check": {
+    "expr": "37+273",
+    "expected": 310,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "thm_t09",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "A gas expands slowly at constant temperature, doing 150 J of work. Heat absorbed?",
+   "solution_steps": [
+    "Isothermal ideal gas: ΔU = 0, so Q = W.",
+    "Q = 150 J in."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "150 J in"
+    },
+    {
+     "id": "b",
+     "text": "0 J"
+    },
+    {
+     "id": "c",
+     "text": "150 J out"
+    },
+    {
+     "id": "d",
+     "text": "300 J in"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Set Q = 0 for isothermal.",
+     "student_note": "No temperature change still moves energy: Q = W = 150 J in."
+    },
+    "c": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Flipped heat direction.",
+     "student_note": "Energy must enter to fund the work."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Doubled to 300.",
+     "student_note": "Q equals W here: 150 J."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "thm_t10",
+   "topic_id": "thermodynamics",
+   "concept_id": "units_and_dimensions",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "1 cal ≈ 4.2 J. A snack bar releases 100 cal of heat. In joules?",
+   "solution_steps": [
+    "Multiply by 4.2.",
+    "≈ 420 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "420 J"
+    },
+    {
+     "id": "b",
+     "text": "100 J"
+    },
+    {
+     "id": "c",
+     "text": "4.2 J"
+    },
+    {
+     "id": "d",
+     "text": "23.8 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": false,
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Kept calories as joules.",
+     "student_note": "Multiply by 4.2 for joules."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Answered with the factor.",
+     "student_note": "4.2 converts one cal; scale to 100."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "units_and_dimensions",
+     "severity": "SLIP",
+     "explanation": "Divided 100/4.2.",
+     "student_note": "Joules are bigger numbers here: multiply."
+    }
+   },
+   "check": {
+    "expr": "100*4.2",
+    "expected": 420,
+    "tol": 2
+   }
+  },
+  {
+   "id": "thm_p01",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_heat_temperature",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Convert 0°C to Kelvin.",
+   "solution_steps": [
+    "Add 273.",
+    "273 K."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "273 K"
+    },
+    {
+     "id": "b",
+     "text": "0 K"
+    },
+    {
+     "id": "c",
+     "text": "−273 K"
+    },
+    {
+     "id": "d",
+     "text": "273°C"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "unit_conversion",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Kept 0.",
+     "student_note": "0°C is 273 K."
+    },
+    "c": {
+     "tag": "unit_conversion",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Subtracted.",
+     "student_note": "Kelvin adds: 0 + 273."
+    },
+    "d": {
+     "tag": "unit_conversion",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Kept °C.",
+     "student_note": "Relabel to K."
+    }
+   },
+   "check": {
+    "expr": "0+273",
+    "expected": 273,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "thm_p02",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Q = +200 J into gas, W = +50 J done BY gas. ΔU?",
+   "solution_steps": [
+    "ΔU = 200 − 50.",
+    "ΔU = +150 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "+150 J"
+    },
+    {
+     "id": "b",
+     "text": "+250 J"
+    },
+    {
+     "id": "c",
+     "text": "−150 J"
+    },
+    {
+     "id": "d",
+     "text": "+50 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Added work.",
+     "student_note": "Work BY the gas subtracts."
+    },
+    "c": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Flipped heat.",
+     "student_note": "Heat in is positive."
+    },
+    "d": {
+     "tag": "omitted_term",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Answered with W.",
+     "student_note": "Both terms count."
+    }
+   },
+   "check": {
+    "expr": "200-50",
+    "expected": 150,
+    "tol": 1
+   }
+  },
+  {
+   "id": "thm_p03",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "A thermos (insulated) is shaken. Heat exchange Q?",
+   "solution_steps": [
+    "Insulated means no heat flow.",
+    "Q = 0."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Zero"
+    },
+    {
+     "id": "b",
+     "text": "Positive"
+    },
+    {
+     "id": "c",
+     "text": "Negative"
+    },
+    {
+     "id": "d",
+     "text": "Infinite"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Missed insulated ⇒ Q = 0.",
+     "student_note": "'Insulated' sets Q = 0 — shaking adds work, not heat."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Assumed heat leaks.",
+     "student_note": "A thermos blocks heat flow."
+    },
+    "d": {
+     "tag": "careless_read",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Claimed infinite.",
+     "student_note": "Finite shake, zero heat."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "thm_p04",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "Isothermal compression does −80 J of work (W by system). Heat flow?",
+   "solution_steps": [
+    "ΔU = 0 so Q = W = −80 J.",
+    "80 J leaves."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "80 J out"
+    },
+    {
+     "id": "b",
+     "text": "80 J in"
+    },
+    {
+     "id": "c",
+     "text": "0 J"
+    },
+    {
+     "id": "d",
+     "text": "160 J out"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Flipped heat direction.",
+     "student_note": "Compression pushes energy in as work; heat must leave."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Set Q = 0.",
+     "student_note": "Isothermal still exchanges heat."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Doubled.",
+     "student_note": "Q equals W: 80 J."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "thm_p05",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_heat_temperature",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Two bodies at the same temperature are touched. Net heat flow?",
+   "solution_steps": [
+    "Flow needs a difference.",
+    "Zero net flow."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "Zero"
+    },
+    {
+     "id": "b",
+     "text": "Hot to cold always"
+    },
+    {
+     "id": "c",
+     "text": "Cold to hot"
+    },
+    {
+     "id": "d",
+     "text": "Depends on size"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "formula_misapplication",
+     "concept_id": "thm_heat_temperature",
+     "severity": "PARTIAL",
+     "explanation": "Applied hot→cold with no difference.",
+     "student_note": "Same temperature means no drive."
+    },
+    "c": {
+     "tag": "careless_read",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Reversed flow.",
+     "student_note": "Flow needs a difference first."
+    },
+    "d": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_heat_temperature",
+     "severity": "SLIP",
+     "explanation": "Invoked size.",
+     "student_note": "Size sets capacity, not direction here."
+    }
+   },
+   "check": null
+  },
+  {
+   "id": "thm_p06",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 1,
+   "expected_time_sec": 45,
+   "text": "Q = +100 J, W = 0 (rigid box). ΔU?",
+   "solution_steps": [
+    "ΔU = 100 − 0.",
+    "ΔU = +100 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "+100 J"
+    },
+    {
+     "id": "b",
+     "text": "0 J"
+    },
+    {
+     "id": "c",
+     "text": "−100 J"
+    },
+    {
+     "id": "d",
+     "text": "+200 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L1",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "omitted_term",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Answered with W.",
+     "student_note": "W = 0, so all 100 J stays as ΔU."
+    },
+    "c": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Negated heat.",
+     "student_note": "Heat in is positive."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Doubled.",
+     "student_note": "100 − 0 = 100."
+    }
+   },
+   "check": {
+    "expr": "100-0",
+    "expected": 100,
+    "tol": 0.5
+   }
+  },
+  {
+   "id": "wep_p07",
+   "topic_id": "work_energy_power",
+   "concept_id": "wep_conservation",
+   "difficulty": 2,
+   "expected_time_sec": 75,
+   "text": "A 2 kg block slides down a rough ramp, dropping 5 m; friction does −40 J of work (g = 10). Speed at bottom?",
+   "solution_steps": [
+    "mgh + W_friction = ½mv²: 100 − 40 = 60.",
+    "v = √60 ≈ 7.75 m/s."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "7.75 m/s"
+    },
+    {
+     "id": "b",
+     "text": "10 m/s"
+    },
+    {
+     "id": "c",
+     "text": "6 m/s"
+    },
+    {
+     "id": "d",
+     "text": "3.87 m/s"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "energy_conservation_misuse",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Ignored the −40 J friction work.",
+     "student_note": "Friction work counts: 100 − 40 = 60 J becomes motion."
+    },
+    "c": {
+     "tag": "omitted_term",
+     "concept_id": "wep_conservation",
+     "severity": "PARTIAL",
+     "explanation": "Used √(2gh)−something = 6.",
+     "student_note": "Account friction inside the energy balance, not after."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "wep_conservation",
+     "severity": "SLIP",
+     "explanation": "Halved to 3.87.",
+     "student_note": "√60 ≈ 7.75. Check the root."
+    }
+   },
+   "check": {
+    "expr": "60**0.5",
+    "expected": 7.75,
+    "tol": 0.05
+   }
+  },
+  {
+   "id": "thm_p07",
+   "topic_id": "thermodynamics",
+   "concept_id": "thm_first_law",
+   "difficulty": 2,
+   "expected_time_sec": 60,
+   "text": "An insulated gas expands adiabatically, doing 120 J of work on the piston. ΔU?",
+   "solution_steps": [
+    "Adiabatic means Q = 0.",
+    "ΔU = −W = −120 J."
+   ],
+   "options": [
+    {
+     "id": "a",
+     "text": "−120 J"
+    },
+    {
+     "id": "b",
+     "text": "+120 J"
+    },
+    {
+     "id": "c",
+     "text": "0 J"
+    },
+    {
+     "id": "d",
+     "text": "−240 J"
+    }
+   ],
+   "correct_option_id": "a",
+   "is_practice": true,
+   "practice_level": "L2",
+   "reviewed": false,
+   "payloads": {
+    "b": {
+     "tag": "sign_convention",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Took work done by gas as positive ΔU.",
+     "student_note": "Work leaving as expansion drains U: −120 J."
+    },
+    "c": {
+     "tag": "implicit_condition",
+     "concept_id": "thm_first_law",
+     "severity": "PARTIAL",
+     "explanation": "Set ΔU = 0 for adiabatic.",
+     "student_note": "Adiabatic pins Q, not ΔU — work still moves energy."
+    },
+    "d": {
+     "tag": "arithmetic_slip",
+     "concept_id": "thm_first_law",
+     "severity": "SLIP",
+     "explanation": "Doubled to 240.",
+     "student_note": "ΔU equals the work here: 120 J."
+    }
+   },
+   "check": null
+  }
+ ]
+}
