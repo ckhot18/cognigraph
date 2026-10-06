@@ -1,0 +1,214 @@
+{
+ "students": [
+  {
+   "student_id": "1",
+   "name": "Aarav Sharma",
+   "roll_no": "1",
+   "class_id": "12-A",
+   "avatar_seed": 1
+  },
+  {
+   "student_id": "2",
+   "name": "Ananya Iyer",
+   "roll_no": "2",
+   "class_id": "12-A",
+   "avatar_seed": 2
+  },
+  {
+   "student_id": "3",
+   "name": "Rohan Patil",
+   "roll_no": "3",
+   "class_id": "12-A",
+   "avatar_seed": 3
+  },
+  {
+   "student_id": "4",
+   "name": "Kavya Nair",
+   "roll_no": "4",
+   "class_id": "12-A",
+   "avatar_seed": 4
+  },
+  {
+   "student_id": "5",
+   "name": "Arjun Deshmukh",
+   "roll_no": "5",
+   "class_id": "12-A",
+   "avatar_seed": 5
+  },
+  {
+   "student_id": "6",
+   "name": "Priya Kulkarni",
+   "roll_no": "6",
+   "class_id": "12-A",
+   "avatar_seed": 6
+  },
+  {
+   "student_id": "7",
+   "name": "Vihaan Joshi",
+   "roll_no": "7",
+   "class_id": "12-A",
+   "avatar_seed": 7
+  },
+  {
+   "student_id": "8",
+   "name": "Isha Mehta",
+   "roll_no": "8",
+   "class_id": "12-A",
+   "avatar_seed": 8
+  },
+  {
+   "student_id": "9",
+   "name": "Siddharth Rao",
+   "roll_no": "9",
+   "class_id": "12-A",
+   "avatar_seed": 9
+  },
+  {
+   "student_id": "10",
+   "name": "Meera Pawar",
+   "roll_no": "10",
+   "class_id": "12-A",
+   "avatar_seed": 10
+  },
+  {
+   "student_id": "11",
+   "name": "Aditya Jadhav",
+   "roll_no": "11",
+   "class_id": "12-A",
+   "avatar_seed": 11
+  },
+  {
+   "student_id": "12",
+   "name": "Sneha Gokhale",
+   "roll_no": "12",
+   "class_id": "12-A",
+   "avatar_seed": 12
+  },
+  {
+   "student_id": "13",
+   "name": "Kabir Singh",
+   "roll_no": "13",
+   "class_id": "12-A",
+   "avatar_seed": 13
+  },
+  {
+   "student_id": "14",
+   "name": "Diya Reddy",
+   "roll_no": "14",
+   "class_id": "12-A",
+   "avatar_seed": 14
+  },
+  {
+   "student_id": "15",
+   "name": "Yash More",
+   "roll_no": "15",
+   "class_id": "12-A",
+   "avatar_seed": 15
+  },
+  {
+   "student_id": "16",
+   "name": "Riya Chavan",
+   "roll_no": "16",
+   "class_id": "12-A",
+   "avatar_seed": 16
+  },
+  {
+   "student_id": "17",
+   "name": "Neil DSouza",
+   "roll_no": "17",
+   "class_id": "12-A",
+   "avatar_seed": 17
+  },
+  {
+   "student_id": "18",
+   "name": "Tanvi Shinde",
+   "roll_no": "18",
+   "class_id": "12-A",
+   "avatar_seed": 18
+  },
+  {
+   "student_id": "19",
+   "name": "Om Kamble",
+   "roll_no": "19",
+   "class_id": "12-A",
+   "avatar_seed": 19
+  },
+  {
+   "student_id": "20",
+   "name": "Sana Sheikh",
+   "roll_no": "20",
+   "class_id": "12-A",
+   "avatar_seed": 20
+  },
+  {
+   "student_id": "21",
+   "name": "Harsh Gupta",
+   "roll_no": "21",
+   "class_id": "12-A",
+   "avatar_seed": 21
+  },
+  {
+   "student_id": "22",
+   "name": "Pooja Bhosale",
+   "roll_no": "22",
+   "class_id": "12-A",
+   "avatar_seed": 22
+  },
+  {
+   "student_id": "23",
+   "name": "Dev Malhotra",
+   "roll_no": "23",
+   "class_id": "12-A",
+   "avatar_seed": 23
+  },
+  {
+   "student_id": "24",
+   "name": "Aisha Khan",
+   "roll_no": "24",
+   "class_id": "12-A",
+   "avatar_seed": 24
+  },
+  {
+   "student_id": "25",
+   "name": "Karan Thakur",
+   "roll_no": "25",
+   "class_id": "12-A",
+   "avatar_seed": 25
+  },
+  {
+   "student_id": "26",
+   "name": "Nisha Menon",
+   "roll_no": "26",
+   "class_id": "12-A",
+   "avatar_seed": 26
+  },
+  {
+   "student_id": "27",
+   "name": "Pranav Kale",
+   "roll_no": "27",
+   "class_id": "12-A",
+   "avatar_seed": 27
+  },
+  {
+   "student_id": "28",
+   "name": "Rhea Fernandes",
+   "roll_no": "28",
+   "class_id": "12-A",
+   "avatar_seed": 28
+  },
+  {
+   "student_id": "29",
+   "name": "Atharv Salunkhe",
+   "roll_no": "29",
+   "class_id": "12-A",
+   "avatar_seed": 29
+  },
+  {
+   "student_id": "30",
+   "name": "Zoya Ansari",
+   "roll_no": "30",
+   "class_id": "12-A",
+   "avatar_seed": 30
+  }
+ ]
+}

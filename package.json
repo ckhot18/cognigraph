@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "dev": "concurrently -n server,client \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
-    "test": "node --test server/test/smoke.test.js server/test/data.test.js server/test/engine.test.js server/test/api.test.js",
+    "test": "node --test server/test/smoke.test.js server/test/data.test.js server/test/engine.test.js server/test/api.test.js server/test/pack.test.js server/test/gen.test.js",
     "build": "npm run build --workspace=client",
     "start": "NODE_ENV=production node server/index.js",
-    "seed": "node server/scripts/generate-cohort.js"
+    "seed": "node server/scripts/generate-data.js"
   },
   "devDependencies": {
     "concurrently": "9.0.1"
