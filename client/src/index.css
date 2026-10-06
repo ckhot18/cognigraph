@@ -29,10 +29,24 @@
   40%, 80% { transform: translateX(6px); }
 }
 
+@keyframes confetti-fall {
+  0% { opacity: 1; transform: translateY(-6px) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(46px) rotate(220deg); }
+}
+
 .animate-pulse-red { animation: pulse-red 1.6s ease-in-out infinite; }
 .animate-glow-gold { animation: glow-gold 2.2s ease-in-out infinite; }
 .animate-fade-up { animation: fade-up 0.45s ease-out both; }
 .animate-shake { animation: shake-x 0.4s ease-in-out; }
+.confetti-bit {
+  position: absolute;
+  top: -4px;
+  width: 7px;
+  height: 10px;
+  border-radius: 1px;
+  animation: confetti-fall 0.9s ease-in forwards;
+  pointer-events: none;
+}
 
 .edge-trace {
   stroke-dasharray: 8 6;
