@@ -44,7 +44,7 @@ export default function TeacherStudent({ studentId }) {
     <TShell user={{ name: '' }} onLogout={tLogout}>
       <button onClick={() => go('/teacher/students')} className="text-sm text-stone-600 underline">← Roster</button>
       <div className="flex flex-wrap items-center gap-2">
-        <h1 className="text-xl font-bold text-stone-900">{p.student_id && `Student ${studentId}`}</h1>
+        <h1 className="text-xl font-bold text-stone-900">{data.name ?? `Student ${studentId}`}</h1>
         <Badge tone={data.segment === 'ACCELERATE' ? 'green' : data.segment === 'NEEDS_STRONG_SUPPORT' ? 'red' : 'amber'}>{data.segment.replace(/_/g, ' ')}</Badge>
         <span className="text-sm text-stone-600">{p.overall.toFixed(1)}% overall · {p.trend.toLowerCase()} ({p.trend_slope} pts/test)</span>
       </div>

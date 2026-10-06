@@ -223,11 +223,23 @@ function PaceStrip({ profile }) {
 function Plan({ plan }) {
   if (!plan) return <Skeleton className="h-48" />;
   const recs = plan.recommendations ?? [];
+  const redirect = recs.find((r) => r.redirect);
+  const STATE_TONE = { TODO: 'amber', IN_PROGRESS: 'sky', DONE: 'green' };
+  const STATE_LABEL = { TODO: 'To do', IN_PROGRESS: 'In motion', DONE: 'Bridged' };
   return (
     <div className="space-y-3">
+      {redirect && (
+        <div className="animate-pulse-amber rounded-2xl border border-amber-300 bg-amber-50 p-4" role="alert">
+          <p className="font-semibold text-amber-950">Back to foundations: {redirect.title.replace('Back to foundations: ', '')}</p>
+          <p className="mt-1 text-sm text-amber-900">{redirect.why} What comes next stays held until this bridge lands.</p>
+        </div>
+      )}
       {recs.map((r) => (
         <Card key={r.id} className="border-amber-200">
-          <p className="font-semibold text-stone-900">{r.title}</p>
+          <div className="flex items-center gap-2">
+            <p className="font-semibold text-stone-900">{r.title}</p>
+            {r.state && <Badge tone={STATE_TONE[r.state] ?? 'slate'}>{STATE_LABEL[r.state] ?? r.state}</Badge>}
+          </div>
           <p className="mt-1 text-sm text-stone-600">{r.why}</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {r.actions.map((a, i) => (

@@ -10,16 +10,50 @@ const STATE_META = {
   ACCELERATED: { label: 'Ready to stretch', dot: '#b45309', fill: '#fef9c3' },
 };
 
-// Horizontal concept chain with topic filter (26 nodes scroll horizontally).
+// Layered DAG: columns by dependency depth, curved edges, topic filter, drawer.
 export default function ConceptMap({ dag, states, onBridge, compact }) {
   const topics = dag?.topics ?? [];
   const [filter, setFilter] = useState('all');
   const [open, setOpen] = useState(null);
-  const nodes = useMemo(() => {
-    const list = dag?.concepts ?? [];
-    return filter === 'all' ? list : list.filter((n) => n.topic_id === filter);
+
+  const layout = useMemo(() => {
+    const concepts = dag?.concepts ?? [];
+    const list = filter === 'all' ? concepts : concepts.filter((n) => n.topic_id === filter);
+    const ids = new Set(list.map((n) => n.id));
+    const depth = {};
+    const dv = (id, seen = new Set()) => {
+      if (depth[id] != null) return depth[id];
+      if (seen.has(id)) return 0;
+      seen.add(id);
+      const c = concepts.find((n) => n.id === id);
+      const ps = (c?.prerequisites ?? []).filter((p) => ids.has(p));
+      depth[id] = ps.length === 0 ? 0 : 1 + Math.max(...ps.map((p) => dv(p, new Set(seen))));
+      return depth[id];
+    };
+    list.forEach((n) => dv(n.id));
+    const cols = {};
+    list.forEach((n) => {
+      const d = depth[n.id];
+      cols[d] = cols[d] || [];
+      cols[d].push(n);
+    });
+    const pos = {};
+    Object.entries(cols).forEach(([d, ns]) => {
+      const rowH = 300 / Math.max(ns.length, 1);
+      ns.forEach((n, i) => {
+        pos[n.id] = { x: 90 + Number(d) * 175, y: 20 + (i + 0.5) * Math.min(rowH, 64) };
+      });
+    });
+    const maxD = Math.max(0, ...Object.keys(cols).map(Number));
+    const W = 90 + maxD * 175 + 100;
+    const edges = [];
+    list.forEach((n) => {
+      for (const p of n.prerequisites ?? []) {
+        if (pos[p] && pos[n.id]) edges.push([p, n.id]);
+      }
+    });
+    return { list, pos, W: W + 60, H: 340, edges };
   }, [dag, filter]);
-  const W = Math.max(560, nodes.length * 120);
 
   return (
     <div>
@@ -33,23 +67,32 @@ export default function ConceptMap({ dag, states, onBridge, compact }) {
           ))}
         </div>
       )}
-      <div className="overflow-x-auto rounded-xl border border-stone-200 bg-white p-3">
-        <svg viewBox={`0 0 ${W} 120`} style={{ minWidth: 560, width: '100%' }} role="img" aria-label="Concept map">
-          {nodes.map((n, i) => {
-            const x = 60 + i * 120;
+      <div className="overflow-auto rounded-xl border border-stone-200 bg-white p-2">
+        <svg viewBox={`0 0 ${layout.W} ${layout.H}`} style={{ minWidth: 620, width: '100%' }} role="img" aria-label="Concept dependency graph">
+          {layout.edges.map(([a, b], i) => {
+            const A = layout.pos[a];
+            const B = layout.pos[b];
+            const hot = states?.[b]?.warning && states?.[a]?.state === 'BLOCKED_NEED_ROOT';
+            const mx = (A.x + B.x) / 2;
+            return <path key={i} d={`M ${A.x + 30} ${A.y} C ${mx} ${A.y}, ${mx} ${B.y}, ${B.x - 30} ${B.y}`} fill="none" stroke={hot ? '#d97706' : '#d6d0c7'} strokeWidth={hot ? 2.5 : 1.5} />;
+          })}
+          {layout.list.map((n) => {
+            const p = layout.pos[n.id];
             const st = states?.[n.id]?.state ?? 'LOCKED';
             const meta = STATE_META[st] ?? STATE_META.LOCKED;
             const unknown = states?.[n.id]?.unknown;
+            const isRoot = st === 'BLOCKED_NEED_ROOT';
             return (
-              <g key={n.id}>
-                {i > 0 && <line x1={x - 120 + 26} y1={48} x2={x - 26} y2={48} stroke="#d6d0c7" strokeWidth={2} />}
-                <circle cx={x} cy={48} r={24} fill={unknown ? '#faf8f5' : meta.fill} stroke={meta.dot} strokeWidth={2.5} opacity={unknown ? 0.6 : 1}>
-                  <title>{`${n.title} — ${unknown ? 'Not assessed yet' : meta.label}`}</title>
-                </circle>
-                <text x={x} y={100} textAnchor="middle" fontSize={11} fill="#57534e">
-                  {n.title.length > 22 ? n.title.slice(0, 21) + '…' : n.title}
+              <g key={n.id} transform={`translate(${p.x - 30}, ${p.y - 22})`}>
+                <title>{`${n.title} — ${unknown ? 'Not assessed yet' : meta.label}`}</title>
+                <rect width={150} height={44} rx={10} fill={unknown ? '#faf8f5' : meta.fill} stroke={meta.dot} strokeWidth={isRoot ? 2.5 : 1.5} className={isRoot ? 'animate-pulse-amber' : undefined} />
+                <text x={10} y={19} fontSize={11} fontWeight={600} fill="#1c1917">
+                  {(n.title.length > 24 ? n.title.slice(0, 23) + '…' : n.title)}
                 </text>
-                <circle cx={x} cy={48} r={24} fill="transparent" onClick={() => setOpen(n)} style={{ cursor: 'pointer' }} tabIndex={0} role="button" aria-label={n.title}
+                <text x={10} y={34} fontSize={10} fill="#78716c">
+                  {unknown ? 'Not assessed yet' : meta.label}{isRoot ? ' · ROOT' : ''}{st === 'LOCKED' && !unknown ? ' · held' : ''}
+                </text>
+                <rect width={150} height={44} rx={10} fill="transparent" onClick={() => setOpen(n)} style={{ cursor: 'pointer' }} tabIndex={0} role="button" aria-label={n.title}
                   onKeyDown={(e) => { if (e.key === 'Enter') setOpen(n); }} />
               </g>
             );
@@ -63,9 +106,7 @@ export default function ConceptMap({ dag, states, onBridge, compact }) {
           ))}
         </div>
       )}
-      {open && (
-        <NodeDrawer node={open} state={states?.[open.id]} onClose={() => setOpen(null)} onBridge={onBridge} />
-      )}
+      {open && <NodeDrawer node={open} state={states?.[open.id]} onClose={() => setOpen(null)} onBridge={onBridge} />}
     </div>
   );
 }

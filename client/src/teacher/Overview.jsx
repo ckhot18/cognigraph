@@ -15,6 +15,7 @@ export function TShell({ user, onLogout, children }) {
             <button onClick={() => go('/teacher/lecture-planner')} className="hover:text-stone-900">Lecture planner</button>
           </nav>
           <span className="ml-auto rounded bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900">Synthetic demo data</span>
+          <button onClick={resetDemo} className="no-print rounded-lg border border-stone-300 bg-white px-3 py-1.5 text-sm" title="Re-seed overlays, sessions and assignments">Reset demo</button>
           <span className="text-sm text-stone-600">{user?.name}</span>
           <button onClick={onLogout} className="no-print rounded-lg border border-stone-300 px-3 py-1.5 text-sm">Log out</button>
         </div>
@@ -35,6 +36,14 @@ export default function TeacherOverview({ user, onLogout }) {
   useEffect(() => {
     Promise.all([api.tOverview(), api.assignments()]).then(([o, a]) => { setData(o); setAsgs(a.assignments); }).catch(() => {});
   }, []);
+
+  const resetDemo = async () => {
+    if (!window.confirm('Reset all demo progress (overlays, sessions, assignments)?')) return;
+    await api.reset();
+    const [o, a] = await Promise.all([api.tOverview(), api.assignments()]);
+    setData(o);
+    setAsgs(a.assignments);
+  };
   if (!data) return <TShell user={user} onLogout={onLogout}><Skeleton className="h-48" /></TShell>;
   if (!data.total_students) return <TShell user={user} onLogout={onLogout}><EmptyState title="Overview is taking a moment" hint="Reload to try again." /></TShell>;
 

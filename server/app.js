@@ -284,7 +284,8 @@ export function createApp(dataDir) {
     const p = store.cache.profiles.get(req.params.id);
     if (!p) return err(res, 404, 'NOT_FOUND', `Unknown student "${req.params.id}".`);
     const seg = store.cache.segments.get(req.params.id);
-    res.json({ profile: p, segment: seg.primary, secondary: seg.secondary, teacher_extras: teacherExtras(store, req.params.id) });
+    const who = db.students.find((s) => s.student_id === req.params.id);
+    res.json({ name: who?.name ?? req.params.id, profile: p, segment: seg.primary, secondary: seg.secondary, teacher_extras: teacherExtras(store, req.params.id) });
   });
 
   app.get('/api/teacher/lecture-plan', ...auth('teacher'), (req, res) => {

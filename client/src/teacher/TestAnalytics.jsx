@@ -185,9 +185,11 @@ function Scatter({ students }) {
         <text x={8} y={H - 8} fontSize={11} fill="#78716c">Fluent</text>
         <text x={W - 88} y={H - 8} fontSize={11} fill="#78716c">Careful, slow</text>
         {students.map((s) => (
-          <circle key={s.student_id} cx={X(s.avgRatio)} cy={Y(s.acc)} r={4.5} fill="#60a5fa" opacity={0.8}>
-            <title>{`${s.name}: ${Math.round(s.acc * 100)}%, ${s.avgRatio.toFixed(2)}× time`}</title>
-          </circle>
+          <a key={s.student_id} href={`#/teacher/students/${s.student_id}`} style={{ cursor: 'pointer' }}>
+            <circle cx={X(s.avgRatio)} cy={Y(s.acc)} r={5.5} fill="#60a5fa" opacity={0.85}>
+              <title>{`${s.name}: ${Math.round(s.acc * 100)}% — open drill-down`}</title>
+            </circle>
+          </a>
         ))}
       </svg>
     </div>

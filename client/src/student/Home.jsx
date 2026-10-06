@@ -70,7 +70,10 @@ export default function StudentHome({ user, onLogout }) {
 
       {top && (
         <section className="animate-fade-up mt-4 rounded-2xl bg-gradient-to-r from-amber-200 to-amber-100 p-5" aria-label="Next best step">
-          <p className="text-sm font-semibold text-amber-950">Your next best step · {etaMinutes(top)} min</p>
+          <p className="text-sm font-semibold text-amber-950">
+            {top.redirect ? 'Back to foundations' : 'Your next best step'} · {etaMinutes(top)} min
+            {top.state && top.state !== 'TODO' ? ` · ${top.state === 'DONE' ? 'Bridged' : 'In motion'}` : ''}
+          </p>
           <p className="mt-1 text-sm text-amber-900">{top.why}</p>
           <button
             onClick={() => {
@@ -89,7 +92,11 @@ export default function StudentHome({ user, onLogout }) {
       <section className="mt-4 grid gap-4 md:grid-cols-2">
         <Card>
           <h2 className="font-semibold text-stone-900">Progress over time</h2>
-          <LineChart points={lastTwo.map((t) => t.pct)} hollow={lastTwo.map((t) => !t.has_item_data)} />
+          <LineChart
+            points={lastTwo.map((t) => t.pct)}
+            hollow={lastTwo.map((t) => !t.has_item_data)}
+            links={lastTwo.map((t) => (t.has_item_data ? `#/student/tests/${t.test_id}` : undefined))}
+          />
           <p className="mt-1 text-xs text-stone-500">Hollow dots are summary-only tests.</p>
         </Card>
         <Card>

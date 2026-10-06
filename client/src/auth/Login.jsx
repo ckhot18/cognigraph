@@ -4,6 +4,7 @@ import { SegmentedControl, Card } from '../components/ui.jsx';
 import { go } from '../App.jsx';
 
 const SHORTCUTS = [
+  { role: 'student', id: '5', label: 'Kinematics demo · Student 5', next: '/student/tests/kin_test' },
   { role: 'student', id: '1', label: 'Student 1 · top performer' },
   { role: 'student', id: '5', label: 'Student 5 · sign-convention gaps' },
   { role: 'student', id: '10', label: 'Student 10 · calculation habits' },
@@ -21,7 +22,7 @@ export default function Login({ onLogin }) {
   const [issue, setIssue] = useState(null);
   const [open, setOpen] = useState(params.get('demo') === '1');
 
-  const submit = async (r, i, pw) => {
+  const submit = async (r, i, pw, next) => {
     setBusy(true);
     setIssue(null);
     try {
@@ -30,6 +31,7 @@ export default function Login({ onLogin }) {
       store.token = token;
       store.user = user;
       onLogin(user);
+      if (next) go(next);
     } catch (e) {
       setIssue('Those details did not match. Check the ID and try again.');
     } finally {
@@ -86,7 +88,7 @@ export default function Login({ onLogin }) {
               <button
                 key={s.label}
                 disabled={busy}
-                onClick={() => submit(s.role, s.id, '123')}
+                onClick={() => submit(s.role, s.id, '123', s.next)}
                 className="block w-full rounded-lg px-2 py-1.5 text-left text-sm text-stone-700 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900"
               >
                 {s.label}
