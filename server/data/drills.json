@@ -1,0 +1,60 @@
+{
+  "drills": [
+    {
+      "drill_id": "drill_sign_01",
+      "tag": "sign_convention_gravity",
+      "node": "coord_sign_conventions",
+      "prompt": "A drone moves vertically upward at +5 m/s and drops a package. In an upward-positive coordinate system, what is the acceleration 'a' of the package immediately after release?",
+      "options": [
+        { "id": "a", "text": "+9.8 m/s²", "feedback": "Gravity always points down. Down is negative here, so a cannot be positive." },
+        { "id": "b", "text": "−9.8 m/s²", "feedback": "Correct. Up is +, gravity points down ⇒ a = −9.8 m/s²." },
+        { "id": "c", "text": "+5 m/s²", "feedback": "+5 is the drone's velocity, not the package's acceleration." },
+        { "id": "d", "text": "0 m/s²", "feedback": "Once released, only gravity acts. a ≠ 0." }
+      ],
+      "correct_option_id": "b",
+      "hint": "Draw an arrow for 'up' and one for 'gravity'. Do they point the same way?"
+    },
+    {
+      "drill_id": "drill_boundary_01",
+      "tag": "model_boundary_constant_vs_variable",
+      "node": "constant_accel_eqs",
+      "prompt": "Does v = u + at apply when acceleration depends on time, a(t) = 6t? Choose the correct statement.",
+      "options": [
+        { "id": "a", "text": "Yes — substitute a = 6t into v = u + at", "feedback": "v = u + at needs a *constant* a. Here a changes every instant." },
+        { "id": "b", "text": "No — a is not constant, so use calculus (v = dx/dt or v = ∫a dt)", "feedback": "Correct." },
+        { "id": "c", "text": "Yes — use the average of a(0) and a(2)", "feedback": "Averaging a hides how it changes; that is not valid here." },
+        { "id": "d", "text": "No — the problem cannot be solved", "feedback": "It can — calculus handles variable acceleration." }
+      ],
+      "correct_option_id": "b",
+      "hint": "v = u + at is derived assuming a is constant. Is 6t constant?"
+    },
+    {
+      "drill_id": "drill_rest_01",
+      "tag": "implicit_rest_state",
+      "node": "implicit_boundary_conds",
+      "prompt": "A stone is 'dropped' from a cliff. What is its initial velocity u?",
+      "options": [
+        { "id": "a", "text": "Unknown", "feedback": "The word 'dropped' gives it away." },
+        { "id": "b", "text": "0 m/s", "feedback": "Correct. 'Dropped' (not thrown) means starts from rest: u = 0." },
+        { "id": "c", "text": "9.8 m/s", "feedback": "9.8 is g (acceleration), not u." },
+        { "id": "d", "text": "45 m/s", "feedback": "45 is a height in the problem, not a speed." }
+      ],
+      "correct_option_id": "b",
+      "hint": "Dropping ≠ throwing. What speed does an object have the instant it is let go?"
+    },
+    {
+      "drill_id": "drill_vector_01",
+      "tag": "vector_vs_scalar",
+      "node": "vector_decomposition_2d",
+      "prompt": "A ball is launched at 20 m/s at 90° (straight up). What is its horizontal velocity component?",
+      "options": [
+        { "id": "a", "text": "20 m/s", "feedback": "That's the full speed, not the horizontal part." },
+        { "id": "b", "text": "0 m/s", "feedback": "Correct: vx = 20·cos90° = 0." },
+        { "id": "c", "text": "10 m/s", "feedback": "Check cos 90°." },
+        { "id": "d", "text": "−20 m/s", "feedback": "Direction is up; there is no leftward component." }
+      ],
+      "correct_option_id": "b",
+      "hint": "Horizontal component = v·cosθ. What is cos 90°?"
+    }
+  ]
+}

@@ -1,0 +1,424 @@
+{
+  "questions": [
+    {
+      "question_id": "kin_q_101",
+      "target_node": "coord_sign_conventions",
+      "prompt": "A ball is thrown straight up at 20 m/s. Taking upward as positive and g = 9.8 m/s², what is its displacement at t = 3 s?",
+      "correct_option_id": "opt_a",
+      "expected_time_sec": 60,
+      "options": [
+        {
+          "id": "opt_a",
+          "text": "15.9 m",
+          "numeric": 15.9,
+          "payload": {
+            "error_type": "CORRECT",
+            "remediation_tag": "sign_convention_gravity",
+            "severity": "NONE",
+            "explanation": "Correct: s = ut + ½at² with a = −9.8 m/s² gives s = 60 − 44.1 = 15.9 m."
+          }
+        },
+        {
+          "id": "opt_b",
+          "text": "104.1 m",
+          "numeric": 104.1,
+          "payload": {
+            "error_type": "SIGN_CONVENTION_INVERSION",
+            "remediation_tag": "sign_convention_gravity",
+            "severity": "SYSTEMIC_MISCONCEPTION",
+            "explanation": "Student assigned positive acceleration (+9.8) to gravity while defining upward displacement as positive (+20), computing s = (20)(3) + 0.5·9.8·(3²) = 104.1 m."
+          }
+        },
+        {
+          "id": "opt_c",
+          "text": "60.0 m",
+          "numeric": 60.0,
+          "payload": {
+            "error_type": "ACCELERATION_OMISSION",
+            "remediation_tag": "constant_accel_eqs",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student calculated s = u·t and entirely omitted the acceleration term ½at², giving 20·3 = 60.0 m."
+          }
+        },
+        {
+          "id": "opt_d",
+          "text": "30.6 m",
+          "numeric": 30.6,
+          "payload": {
+            "error_type": "SQUARING_ERROR",
+            "remediation_tag": "arithmetic_execution",
+            "severity": "SLIP",
+            "explanation": "Student squared the time incorrectly (t² as 6), computing 60 − 0.5·9.8·6 = 30.6 m."
+          }
+        }
+      ],
+      "rubric": {
+        "patterns": [
+          {
+            "option_id": "opt_b",
+            "any_of": ["\\+?0\\.5\\*\\(?\\+?9\\.8\\)?\\*"],
+            "none_of": ["-9\\.8", "\\(-9\\.8\\)"],
+            "evidence_template": "Assigned positive acceleration (+9.8) to gravity while defining upward displacement as positive (+20).",
+            "evidence_pattern": "0\\.5\\s*\\*\\s*\\+?9\\.8\\s*\\*\\s*\\(?3\\^2\\)?"
+          },
+          {
+            "option_id": "opt_c",
+            "any_of": ["^s=\\(?20\\)?\\*\\(?3\\)?=?60"],
+            "none_of": ["0\\.5", "9\\.8", "4\\.9"],
+            "evidence_template": "Computed displacement as s = u·t only, omitting the ½at² term entirely.",
+            "evidence_pattern": "s\\s*=\\s*\\(?20\\)?\\s*\\*?\\s*\\(?3\\)?\\s*=?\\s*60"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "kin_q_102",
+      "target_node": "variable_accel_calculus",
+      "prompt": "A particle moves with position x(t) = 3t³ (metres, seconds). Find its velocity at t = 2 s.",
+      "correct_option_id": "opt_a",
+      "expected_time_sec": 75,
+      "options": [
+        {
+          "id": "opt_a",
+          "text": "36 m/s",
+          "numeric": 36,
+          "payload": {
+            "error_type": "CORRECT",
+            "remediation_tag": "model_boundary_constant_vs_variable",
+            "severity": "NONE",
+            "explanation": "Correct: v = dx/dt = 9t², so v(2) = 36 m/s."
+          }
+        },
+        {
+          "id": "opt_b",
+          "text": "Cannot be determined — acceleration 'a' is not given",
+          "numeric": null,
+          "payload": {
+            "error_type": "CONSTANT_ACCEL_MISAPPLIED",
+            "remediation_tag": "model_boundary_constant_vs_variable",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student reached for v = u + at and stalled because 'a' was not provided, instead of differentiating x(t) = 3t³."
+          }
+        },
+        {
+          "id": "opt_c",
+          "text": "24 m/s",
+          "numeric": 24,
+          "payload": {
+            "error_type": "POSITION_VS_VELOCITY",
+            "remediation_tag": "model_boundary_constant_vs_variable",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student evaluated the position x(2) = 24 m and reported it as the velocity."
+          }
+        },
+        {
+          "id": "opt_d",
+          "text": "18 m/s",
+          "numeric": 18,
+          "payload": {
+            "error_type": "POWER_RULE_SLIP",
+            "remediation_tag": "arithmetic_execution",
+            "severity": "SLIP",
+            "explanation": "Student differentiated with a power-rule slip (3·3·2 = 18) instead of 9t² at t = 2."
+          }
+        }
+      ],
+      "rubric": {
+        "patterns": [
+          {
+            "option_id": "opt_b",
+            "any_of": ["cannot solve", "not provided", "a.*not given"],
+            "all_of": ["v=u\\+at"],
+            "none_of": [],
+            "evidence_template": "Applied 1D Constant Acceleration equation (v = u + at) to a Variable Acceleration polynomial system x(t) = 3t³.",
+            "evidence_pattern": "v\\s*=\\s*u\\s*\\+\\s*at"
+          },
+          {
+            "option_id": "opt_c",
+            "any_of": ["x\\(2\\)\\s*=\\s*24", "=\\s*3\\(2\\)\\^3", "=\\s*3\\*8"],
+            "none_of": ["9t", "dx/dt", "derivative"],
+            "evidence_template": "Evaluated position x(2) = 24 m and reported it as velocity.",
+            "evidence_pattern": "3\\s*\\(?2\\)?\\^3\\s*=\\s*24|x\\(2\\)\\s*=\\s*24"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "kin_q_103",
+      "target_node": "implicit_boundary_conds",
+      "prompt": "A stone is dropped from a 45 m cliff. How long does it take to reach the ground? (g = 9.8 m/s²)",
+      "correct_option_id": "opt_a",
+      "expected_time_sec": 60,
+      "options": [
+        {
+          "id": "opt_a",
+          "text": "3.03 s",
+          "numeric": 3.03,
+          "payload": {
+            "error_type": "CORRECT",
+            "remediation_tag": "implicit_rest_state",
+            "severity": "NONE",
+            "explanation": "Correct: 'dropped' means u = 0, so s = ½gt² gives t = √(2·45/9.8) ≈ 3.03 s."
+          }
+        },
+        {
+          "id": "opt_b",
+          "text": "Cannot be determined — u and v are missing",
+          "numeric": null,
+          "payload": {
+            "error_type": "MISSED_REST_CONDITION",
+            "remediation_tag": "implicit_rest_state",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student failed to infer that 'dropped from rest' defines u = 0 m/s and claimed the problem cannot be solved."
+          }
+        },
+        {
+          "id": "opt_c",
+          "text": "4.59 s",
+          "numeric": 4.59,
+          "payload": {
+            "error_type": "DIVIDED_S_BY_G",
+            "remediation_tag": "implicit_rest_state",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student divided displacement by g (45/9.8 = 4.59 s), ignoring the ½t² structure of accelerated motion."
+          }
+        },
+        {
+          "id": "opt_d",
+          "text": "9.18 s",
+          "numeric": 9.18,
+          "payload": {
+            "error_type": "FORGOT_SQRT",
+            "remediation_tag": "arithmetic_execution",
+            "severity": "SLIP",
+            "explanation": "Student computed 2·45/9.8 = 9.18 but forgot the square root."
+          }
+        }
+      ],
+      "rubric": {
+        "patterns": [
+          {
+            "option_id": "opt_b",
+            "any_of": ["missing.*(initial|u)", "cannot solve", "not (given|provided)"],
+            "none_of": ["u\\s*=\\s*0"],
+            "evidence_template": "Failed to infer that the phrase 'dropped from rest' explicitly defines initial velocity u = 0 m/s.",
+            "evidence_pattern": "missing initial velocity[^.]*|cannot solve[^.]*"
+          },
+          {
+            "option_id": "opt_c",
+            "any_of": ["45\\s*/\\s*9\\.8", "=\\s*4\\.59"],
+            "none_of": ["sqrt", "√", "\\^\\(1/2\\)"],
+            "evidence_template": "Divided displacement by g (45/9.8), ignoring accelerated-motion structure.",
+            "evidence_pattern": "45\\s*/\\s*9\\.8\\s*=\\s*4\\.59"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "kin_q_104",
+      "target_node": "constant_accel_eqs",
+      "prompt": "A car accelerates uniformly from 10 m/s to 30 m/s in 5 s. What distance does it cover?",
+      "correct_option_id": "opt_a",
+      "expected_time_sec": 60,
+      "options": [
+        {
+          "id": "opt_a",
+          "text": "100 m",
+          "numeric": 100,
+          "payload": {
+            "error_type": "CORRECT",
+            "remediation_tag": "constant_accel_eqs",
+            "severity": "NONE",
+            "explanation": "Correct: a = (30−10)/5 = 4 m/s², so s = 10·5 + ½·4·25 = 100 m."
+          }
+        },
+        {
+          "id": "opt_b",
+          "text": "150 m",
+          "numeric": 150,
+          "payload": {
+            "error_type": "USED_FINAL_V_ONLY",
+            "remediation_tag": "constant_accel_eqs",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student used only the final velocity, computing s = 30·5 = 150 m."
+          }
+        },
+        {
+          "id": "opt_c",
+          "text": "50 m",
+          "numeric": 50,
+          "payload": {
+            "error_type": "ACCELERATION_OMISSION",
+            "remediation_tag": "constant_accel_eqs",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student calculated s = u·t and entirely omitted the acceleration term, giving 10·5 = 50 m."
+          }
+        },
+        {
+          "id": "opt_d",
+          "text": "80 m",
+          "numeric": 80,
+          "payload": {
+            "error_type": "ARITH_SLIP",
+            "remediation_tag": "arithmetic_execution",
+            "severity": "SLIP",
+            "explanation": "Student set up the right equation but slipped in arithmetic, landing on 80 m."
+          }
+        }
+      ],
+      "rubric": {
+        "patterns": [
+          {
+            "option_id": "opt_b",
+            "any_of": ["30\\s*\\*\\s*5\\s*=\\s*150"],
+            "none_of": ["10\\s*\\+", "\\+.*10"],
+            "evidence_template": "Used only the final velocity (s = 30·5).",
+            "evidence_pattern": "30\\s*\\*\\s*5\\s*=\\s*150"
+          },
+          {
+            "option_id": "opt_c",
+            "any_of": ["10\\s*\\*\\s*5\\s*=\\s*50"],
+            "none_of": ["0\\.5", "1/2", "½"],
+            "evidence_template": "Computed s = u·t only, omitting the acceleration term.",
+            "evidence_pattern": "10\\s*\\*\\s*5\\s*=\\s*50"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "kin_q_105",
+      "target_node": "vector_decomposition_2d",
+      "prompt": "A projectile is launched at 30 m/s at 30° above the horizontal. What is its initial vertical velocity component?",
+      "correct_option_id": "opt_a",
+      "expected_time_sec": 60,
+      "options": [
+        {
+          "id": "opt_a",
+          "text": "15 m/s",
+          "numeric": 15,
+          "payload": {
+            "error_type": "CORRECT",
+            "remediation_tag": "vector_vs_scalar",
+            "severity": "NONE",
+            "explanation": "Correct: vy = 30·sin30° = 15 m/s."
+          }
+        },
+        {
+          "id": "opt_b",
+          "text": "26 m/s",
+          "numeric": 26,
+          "payload": {
+            "error_type": "SIN_COS_SWAP",
+            "remediation_tag": "vector_vs_scalar",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student swapped sine and cosine, computing 30·cos30° ≈ 26 m/s for the vertical component."
+          }
+        },
+        {
+          "id": "opt_c",
+          "text": "30 m/s",
+          "numeric": 30,
+          "payload": {
+            "error_type": "VECTOR_AS_SCALAR",
+            "remediation_tag": "vector_vs_scalar",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student treated the launch speed as a scalar and assigned the full 30 m/s to the vertical component."
+          }
+        },
+        {
+          "id": "opt_d",
+          "text": "17.3 m/s",
+          "numeric": 17.3,
+          "payload": {
+            "error_type": "ARITH_SLIP",
+            "remediation_tag": "arithmetic_execution",
+            "severity": "SLIP",
+            "explanation": "Student resolved components correctly but slipped in arithmetic, landing on 17.3 m/s."
+          }
+        }
+      ],
+      "rubric": {
+        "patterns": [
+          {
+            "option_id": "opt_b",
+            "any_of": ["30\\s*\\*?\\s*cos\\s*30", "=\\s*26"],
+            "none_of": ["sin\\s*30"],
+            "evidence_template": "Swapped sine and cosine (used 30·cos30° for vertical).",
+            "evidence_pattern": "30\\s*\\*?\\s*cos\\s*30[^.]*"
+          },
+          {
+            "option_id": "opt_c",
+            "any_of": ["vy?\\s*=\\s*30(\\.0)?\\s*m"],
+            "none_of": ["sin", "cos"],
+            "evidence_template": "Assigned the full launch speed to the vertical component.",
+            "evidence_pattern": "vy?\\s*=\\s*30[^.]*"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "kin_q_106",
+      "target_node": "constant_accel_eqs",
+      "prompt": "A car travelling at 20 m/s brakes uniformly at 5 m/s² until it comes to rest. What is its stopping distance?",
+      "correct_option_id": "opt_a",
+      "expected_time_sec": 60,
+      "options": [
+        {
+          "id": "opt_a",
+          "text": "40 m",
+          "numeric": 40,
+          "payload": {
+            "error_type": "CORRECT",
+            "remediation_tag": "constant_accel_eqs",
+            "severity": "NONE",
+            "explanation": "Correct: v² = u² + 2as gives 0 = 400 − 10s, so s = 40 m."
+          }
+        },
+        {
+          "id": "opt_b",
+          "text": "80 m",
+          "numeric": 80,
+          "payload": {
+            "error_type": "FORGOT_HALF_FACTOR",
+            "remediation_tag": "constant_accel_eqs",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student dropped the factor of 2 in v² = u² + 2as, computing 400/5 = 80 m."
+          }
+        },
+        {
+          "id": "opt_c",
+          "text": "4 m",
+          "numeric": 4,
+          "payload": {
+            "error_type": "ARITH_SLIP",
+            "remediation_tag": "arithmetic_execution",
+            "severity": "SLIP",
+            "explanation": "Student set up v² = u² + 2as but slipped in arithmetic, landing on 4 m."
+          }
+        },
+        {
+          "id": "opt_d",
+          "text": "100 m",
+          "numeric": 100,
+          "payload": {
+            "error_type": "SIGN_CONVENTION_INVERSION",
+            "remediation_tag": "sign_convention_gravity",
+            "severity": "PARTIAL_MENTAL_MODEL",
+            "explanation": "Student mishandled signs in the braking equation and inflated the distance to 100 m."
+          }
+        }
+      ],
+      "rubric": {
+        "patterns": [
+          {
+            "option_id": "opt_b",
+            "any_of": ["400\\s*/\\s*5\\s*=\\s*80"],
+            "none_of": ["2\\s*\\*\\s*5", "10\\s*s", "2as"],
+            "evidence_template": "Dropped the factor of 2 in v² = u² + 2as.",
+            "evidence_pattern": "400\\s*/\\s*5\\s*=\\s*80"
+          }
+        ]
+      }
+    }
+  ]
+}
