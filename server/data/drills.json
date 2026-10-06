@@ -55,6 +55,36 @@
       ],
       "correct_option_id": "b",
       "hint": "Horizontal component = v·cosθ. What is cos 90°?"
+    },
+    {
+      "drill_id": "drill_accel_01",
+      "tag": "constant_accel_eqs",
+      "node": "constant_accel_eqs",
+      "prompt": "A ball starts from rest (u = 0) and accelerates uniformly at 2 m/s² for 3 s. Which expression gives the distance s?",
+      "options": [
+        {
+          "id": "a",
+          "text": "s = ½·2·9 = 9 m",
+          "feedback": "Correct. With u = 0, s = ut + ½at² reduces to ½·2·3² = 9 m."
+        },
+        {
+          "id": "b",
+          "text": "s = 0 m (it starts from rest, so it stays put)",
+          "feedback": "Starting from rest does not mean staying put — acceleration builds velocity over time."
+        },
+        {
+          "id": "c",
+          "text": "s = 2·3 = 6 m (s = a·t)",
+          "feedback": "s = a·t drops the ½t² structure of accelerated motion."
+        },
+        {
+          "id": "d",
+          "text": "s = 3 m",
+          "feedback": "3 s is the time, not the distance — use s = ut + ½at²."
+        }
+      ],
+      "correct_option_id": "a",
+      "hint": "Start from rest still covers distance while accelerating: s = ut + ½at² with u = 0."
     }
   ]
 }
