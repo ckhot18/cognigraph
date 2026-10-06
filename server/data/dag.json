@@ -1,0 +1,39 @@
+{
+  "topics": [
+    { "topic_id": "foundations", "title": "Foundations", "subject": "Physics" },
+    { "topic_id": "kinematics", "title": "Kinematics", "subject": "Physics" },
+    { "topic_id": "laws_of_motion", "title": "Laws of Motion", "subject": "Physics" },
+    { "topic_id": "work_energy_power", "title": "Work, Energy & Power", "subject": "Physics" },
+    { "topic_id": "current_electricity", "title": "Current Electricity", "subject": "Physics" },
+    { "topic_id": "optics", "title": "Optics", "subject": "Physics" },
+    { "topic_id": "thermodynamics", "title": "Thermodynamics", "subject": "Physics" }
+  ],
+  "concepts": [
+    { "id": "units_and_dimensions", "topic_id": "foundations", "title": "Units, conversions, significant figures", "description": "SI units, conversions, and significant figures in measurement.", "prerequisites": [], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "vectors_basics", "topic_id": "foundations", "title": "Vectors: magnitude, direction, components", "description": "Vector magnitude, direction, and resolution into components.", "prerequisites": ["units_and_dimensions"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "kin_scalar_variables", "topic_id": "kinematics", "title": "1D variables (u, v, s, t, a)", "description": "Meaning and units of u, v, t, s, a in one dimension.", "prerequisites": ["units_and_dimensions"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "kin_sign_conventions", "topic_id": "kinematics", "title": "Coordinate sign conventions", "description": "Choosing +/− directions; gravity is −g when up is positive.", "prerequisites": ["kin_scalar_variables"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "kin_const_accel", "topic_id": "kinematics", "title": "Constant-acceleration equations", "description": "v=u+at, s=ut+½at², v²=u²+2as — valid only when a is constant.", "prerequisites": ["kin_sign_conventions"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "kin_implicit_conditions", "topic_id": "kinematics", "title": "Implicit conditions (dropped ⇒ u=0, peak ⇒ v=0)", "description": "'Dropped' ⇒ u=0; 'at peak' ⇒ v=0; 'comes to rest' ⇒ v=0.", "prerequisites": ["kin_const_accel"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "kin_2d_vectors", "topic_id": "kinematics", "title": "2D motion & components", "description": "vx = v cosθ, vy = v sinθ; treat axes independently.", "prerequisites": ["kin_sign_conventions", "vectors_basics"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "kin_variable_accel", "topic_id": "kinematics", "title": "Variable acceleration (calculus)", "description": "a = dv/dt, v = dx/dt, integrals for motion equations.", "prerequisites": ["kin_const_accel"], "mastery_threshold": 0.85, "tier": "acceleration" },
+    { "id": "lom_free_body", "topic_id": "laws_of_motion", "title": "Free-body diagrams", "description": "Drawing all forces with correct directions on a body.", "prerequisites": ["vectors_basics", "kin_sign_conventions"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "lom_second_law", "topic_id": "laws_of_motion", "title": "Newton's second law (ΣF = ma)", "description": "Net force equals mass times acceleration, per axis.", "prerequisites": ["lom_free_body", "kin_const_accel"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "lom_friction", "topic_id": "laws_of_motion", "title": "Friction (static vs kinetic)", "description": "Static vs kinetic friction; limiting friction μN.", "prerequisites": ["lom_second_law"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "lom_connected_bodies", "topic_id": "laws_of_motion", "title": "Connected bodies, tension, pulleys", "description": "Tension and pulleys in connected-body systems.", "prerequisites": ["lom_second_law"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "wep_work", "topic_id": "work_energy_power", "title": "Work as force·displacement (signs, angles)", "description": "W = F·s·cosθ; sign depends on the angle.", "prerequisites": ["vectors_basics", "kin_sign_conventions"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "wep_energy_theorem", "topic_id": "work_energy_power", "title": "Work-energy theorem", "description": "Net work equals change in kinetic energy.", "prerequisites": ["wep_work", "kin_const_accel"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "wep_conservation", "topic_id": "work_energy_power", "title": "Energy conservation (and when it fails)", "description": "Conservation holds only without non-conservative work.", "prerequisites": ["wep_energy_theorem"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "wep_power", "topic_id": "work_energy_power", "title": "Power & efficiency", "description": "P = W/t = F·v; efficiency of machines.", "prerequisites": ["wep_work"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "cur_ohm", "topic_id": "current_electricity", "title": "Ohm's law, resistance", "description": "V = IR; resistance and resistivity.", "prerequisites": ["units_and_dimensions"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "cur_series_parallel", "topic_id": "current_electricity", "title": "Series/parallel combinations", "description": "Equivalent resistance in series vs parallel.", "prerequisites": ["cur_ohm"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "cur_kirchhoff", "topic_id": "current_electricity", "title": "Kirchhoff's rules (sign conventions of loops)", "description": "Junction and loop rules with loop sign conventions.", "prerequisites": ["cur_series_parallel"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "cur_power_heating", "topic_id": "current_electricity", "title": "Electrical power & heating", "description": "P = VI = I²R; heating effect of current.", "prerequisites": ["cur_ohm"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "opt_sign_convention", "topic_id": "optics", "title": "Sign convention for mirrors/lenses", "description": "Cartesian sign convention for mirrors and lenses.", "prerequisites": ["vectors_basics"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "opt_mirror_lens", "topic_id": "optics", "title": "Mirror & lens formulas", "description": "1/f = 1/v − 1/u (with signs); magnification.", "prerequisites": ["opt_sign_convention"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "opt_refraction", "topic_id": "optics", "title": "Refraction & Snell's law", "description": "n₁sinθ₁ = n₂sinθ₂ at an interface.", "prerequisites": ["opt_sign_convention"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "opt_tir", "topic_id": "optics", "title": "Total internal reflection", "description": "Critical angle; denser-to-rarer only.", "prerequisites": ["opt_refraction"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "thm_heat_temperature", "topic_id": "thermodynamics", "title": "Heat, temperature, scales (K vs °C)", "description": "Heat vs temperature; Kelvin scale for gas laws.", "prerequisites": ["units_and_dimensions"], "mastery_threshold": 0.75, "tier": "core" },
+    { "id": "thm_first_law", "topic_id": "thermodynamics", "title": "First law (sign of Q, W)", "description": "ΔU = Q − W with sign conventions for heat and work.", "prerequisites": ["thm_heat_temperature", "wep_work"], "mastery_threshold": 0.75, "tier": "core" }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "tests": [
+    { "test_id": "kin_test", "title": "Kinematics Test", "subject": "Physics", "topic_id": "kinematics", "type": "DEEP", "date": "2026-07-14", "max_score": 10, "question_ids": ["kin_t01", "kin_t02", "kin_t03", "kin_t04", "kin_t05", "kin_t06", "kin_t07", "kin_t08", "kin_t09", "kin_t10"] },
+    { "test_id": "lom_test", "title": "Laws of Motion Test", "subject": "Physics", "topic_id": "laws_of_motion", "type": "DEEP", "date": "2026-07-30", "max_score": 10, "question_ids": ["lom_t01", "lom_t02", "lom_t03", "lom_t04", "lom_t05", "lom_t06", "lom_t07", "lom_t08", "lom_t09", "lom_t10"] },
+    { "test_id": "wep_test", "title": "Work-Energy-Power Test", "subject": "Physics", "topic_id": "work_energy_power", "type": "DEEP", "date": "2026-08-18", "max_score": 10, "question_ids": ["wep_t01", "wep_t02", "wep_t03", "wep_t04", "wep_t05", "wep_t06", "wep_t07", "wep_t08", "wep_t09", "wep_t10"] },
+    { "test_id": "elec_test", "title": "Current Electricity Test", "subject": "Physics", "topic_id": "current_electricity", "type": "DEEP", "date": "2026-09-03", "max_score": 10, "question_ids": ["elec_t01", "elec_t02", "elec_t03", "elec_t04", "elec_t05", "elec_t06", "elec_t07", "elec_t08", "elec_t09", "elec_t10"] },
+    { "test_id": "opt_test", "title": "Optics Test", "subject": "Physics", "topic_id": "optics", "type": "DEEP", "date": "2026-09-22", "max_score": 10, "question_ids": ["opt_t01", "opt_t02", "opt_t03", "opt_t04", "opt_t05", "opt_t06", "opt_t07", "opt_t08", "opt_t09", "opt_t10"] },
+    { "test_id": "thm_test", "title": "Thermodynamics Test", "subject": "Physics", "topic_id": "thermodynamics", "type": "DEEP", "date": "2026-10-02", "max_score": 10, "question_ids": ["thm_t01", "thm_t02", "thm_t03", "thm_t04", "thm_t05", "thm_t06", "thm_t07", "thm_t08", "thm_t09", "thm_t10"] },
+    { "test_id": "legacy_mock1", "title": "Physics Mock 1", "subject": "Physics", "topic_id": null, "type": "SUMMARY", "date": "2026-08-28", "max_score": 40, "question_ids": null },
+    { "test_id": "legacy_week1", "title": "Physics Weekly Quiz 1", "subject": "Physics", "topic_id": null, "type": "SUMMARY", "date": "2026-07-21", "max_score": 20, "question_ids": null },
+    { "test_id": "legacy_week2", "title": "Physics Weekly Quiz 2", "subject": "Physics", "topic_id": null, "type": "SUMMARY", "date": "2026-08-08", "max_score": 20, "question_ids": null },
+    { "test_id": "legacy_week3", "title": "Physics Weekly Quiz 3", "subject": "Physics", "topic_id": null, "type": "SUMMARY", "date": "2026-09-12", "max_score": 20, "question_ids": null },
+    { "test_id": "legacy_math_calc", "title": "Mathematics: Calculus Unit Test", "subject": "Mathematics", "topic_id": null, "type": "SUMMARY", "date": "2026-08-15", "max_score": 30, "question_ids": null },
+    { "test_id": "legacy_math_alg", "title": "Mathematics: Algebra Quiz", "subject": "Mathematics", "topic_id": null, "type": "SUMMARY", "date": "2026-07-25", "max_score": 20, "question_ids": null },
+    { "test_id": "legacy_chem_phys", "title": "Chemistry: Physical Chem Test", "subject": "Chemistry", "topic_id": null, "type": "SUMMARY", "date": "2026-09-08", "max_score": 25, "question_ids": null },
+    { "test_id": "legacy_chem_org", "title": "Chemistry: Organic Quiz", "subject": "Chemistry", "topic_id": null, "type": "SUMMARY", "date": "2026-09-26", "max_score": 20, "question_ids": null }
+  ]
+}

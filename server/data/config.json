@@ -6,5 +6,47 @@
   "matrix_green": 0.8,
   "matrix_yellow": 0.55,
   "max_working_text_chars": 2000,
-  "demo_delay_ms": 750
+  "demo_delay_ms": 750,
+
+  "slip_weight": 0.5,
+  "trend_min_tests": 4,
+  "trend_slope_pp": 4,
+
+  "seg_accelerate_overall": 85,
+  "seg_accelerate_max_tag": 2,
+  "seg_support_overall": 40,
+  "seg_support_systemic_tags": 3,
+  "seg_support_weak_topics": 4,
+  "seg_support_topic_cut": 50,
+  "seg_guessing_fastwrong": 0.3,
+  "seg_guessing_acc": 50,
+  "seg_calc_share": 0.5,
+  "seg_calc_mastery": 0.6,
+  "seg_sign_count": 3,
+  "seg_sign_topics": 2,
+  "seg_implicit_count": 3,
+  "seg_lag_score": 55,
+  "seg_lag_others": 70,
+
+  "time_fast": 0.4,
+  "time_slow": 1.4,
+  "discrimination_pct": 27,
+
+  "planner_sev_weight": { "SLIP": 1, "PARTIAL": 2, "SYSTEMIC": 3 },
+  "planner_recap_min": 5,
+  "planner_exit_min": 5,
+  "planner_challenge_min": 5,
+  "planner_challenge_max": 10,
+  "planner_block_min": 5,
+  "planner_block_max_frac": 0.4,
+  "planner_dependant_boost": 0.15,
+  "planner_cross_boost": 1.2,
+  "planner_min_accelerate": 3,
+
+  "practice_len": 8,
+  "practice_cap": 10,
+  "practice_advance_streak": 2,
+  "practice_min_items": 4,
+  "practice_overlay_gain": 0.12,
+  "practice_overlay_cap": 0.95
 }

@@ -1,0 +1,13 @@
+{
+  "tags": {
+    "sign_convention": { "kind": "concept", "escalates": true, "label": "Sign convention error", "student_label": "Sign habits to strengthen", "trap_text": "Signs are chosen once at the start and must ride along on every term." },
+    "implicit_condition": { "kind": "edge_case", "escalates": true, "label": "Missed implicit condition", "student_label": "Hidden-clue reading", "trap_text": "Words like 'dropped', 'adiabatic' or 'ideal' quietly set a value — list what the words imply before solving." },
+    "formula_misapplication": { "kind": "concept", "escalates": true, "label": "Formula misapplication", "student_label": "Choosing the right tool", "trap_text": "Each formula has a validity boundary (constant a, series vs parallel, lens vs mirror) — check it first." },
+    "vector_vs_scalar": { "kind": "concept", "escalates": true, "label": "Vector vs scalar confusion", "student_label": "Direction-aware solving", "trap_text": "Speed is not velocity: split into components before computing." },
+    "energy_conservation_misuse": { "kind": "concept", "escalates": true, "label": "Energy conservation misuse", "student_label": "When conservation applies", "trap_text": "Conservation holds only without friction or other non-conservative work." },
+    "unit_conversion": { "kind": "calculation", "escalates": false, "label": "Unit conversion slip", "student_label": "Unit-check habit", "trap_text": "Convert to SI first (°C→K, cm→m) and check units at the end." },
+    "arithmetic_slip": { "kind": "calculation", "escalates": false, "label": "Arithmetic slip", "student_label": "Careful-computation habit", "trap_text": "One line at a time; estimate first, then compute." },
+    "omitted_term": { "kind": "calculation", "escalates": false, "label": "Omitted term", "student_label": "Full-equation habit", "trap_text": "Write the full equation before substituting so no term goes missing." },
+    "careless_read": { "kind": "careless", "escalates": false, "label": "Careless reading", "student_label": "Slow-down-to-speed-up habit", "trap_text": "Restate what is asked in the first 20 seconds before computing." }
+  }
+}
