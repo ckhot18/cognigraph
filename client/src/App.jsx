@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import StudentHub from './student/StudentHub.jsx';
 
-// Phase 0 app shell. Full Student Hub (Phase 4) and Teacher Center (Phase 5)
-// build on this mode switcher and dark visual language.
+// App shell: mode switcher between Student Hub (Phase 4) and Teacher Center (Phase 5).
 const MODES = [
   { id: 'student', label: 'Student Diagnostic Hub' },
   { id: 'teacher', label: 'Teacher Command Center' },
@@ -43,13 +43,7 @@ export default function App() {
       </header>
       <main className="mx-auto max-w-6xl px-4 py-8">
         {mode === 'student' ? (
-          <section className="rounded-xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur">
-            <h1 className="text-xl font-semibold">Student Diagnostic Hub</h1>
-            <p className="mt-2 text-sm text-slate-400">
-              Phase 0 shell — the diagnostic engine (Phase 2), API (Phase 3) and
-              full hub UI (Phase 4) plug in here.
-            </p>
-          </section>
+          <StudentHub />
         ) : (
           <section className="rounded-xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur">
             <h1 className="text-xl font-semibold">Teacher Command Center</h1>
