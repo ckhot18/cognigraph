@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CogniGraph AI motion language (spec 7.1). */
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55); }
+  50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+}
+
+@keyframes glow-gold {
+  0%, 100% { box-shadow: 0 0 12px 0 rgba(251, 191, 36, 0.45); }
+  50% { box-shadow: 0 0 26px 4px rgba(251, 191, 36, 0.65); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes trace-dash {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes shake-x {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-pulse-red { animation: pulse-red 1.6s ease-in-out infinite; }
+.animate-glow-gold { animation: glow-gold 2.2s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.45s ease-out both; }
+.animate-shake { animation: shake-x 0.4s ease-in-out; }
+
+.edge-trace {
+  stroke-dasharray: 8 6;
+  stroke-dashoffset: 56;
+  animation: trace-dash 0.8s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-red,
+  .animate-glow-gold,
+  .animate-fade-up,
+  .animate-shake,
+  .edge-trace {
+    animation: none;
+  }
+}

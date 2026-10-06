@@ -1,0 +1,23 @@
+{
+  "name": "cognigraph-ai",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
+    "test": "node --test server/test/**/*.test.js",
+    "build": "npm run build --workspace=client",
+    "start": "NODE_ENV=production node server/index.js",
+    "seed": "node server/scripts/generate-cohort.js"
+  },
+  "devDependencies": {
+    "concurrently": "9.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

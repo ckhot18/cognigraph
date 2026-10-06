@@ -1,0 +1,27 @@
+# dependencies (lockfile IS committed — CI uses `npm ci`)
+node_modules/
+
+# build output
+dist/
+dist-ssr/
+coverage/
+
+# env / secrets (never commit)
+.env
+.env.local
+
+# editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.log
+logs/
+
+# local build-spec attachments (authoritative spec lives with the agent prompt, not shipped)
+*SPEC*.md
