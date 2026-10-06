@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import StudentHub from './student/StudentHub.jsx';
+import TeacherCenter from './teacher/TeacherCenter.jsx';
 
 // App shell: mode switcher between Student Hub (Phase 4) and Teacher Center (Phase 5).
 const MODES = [
@@ -9,6 +10,12 @@ const MODES = [
 
 export default function App() {
   const [mode, setMode] = useState('student');
+  const [studentPreset, setStudentPreset] = useState('case1');
+
+  const openStudent = (presetId) => {
+    setStudentPreset(presetId);
+    setMode('student');
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -43,17 +50,9 @@ export default function App() {
       </header>
       <main className="mx-auto max-w-6xl px-4 py-8">
         {mode === 'student' ? (
-          <StudentHub />
+          <StudentHub key={studentPreset} initialPresetId={studentPreset} onExternalPreset={setStudentPreset} />
         ) : (
-          <section className="rounded-xl border border-slate-800 bg-slate-900/70 p-6 backdrop-blur">
-            <h1 className="text-xl font-semibold">Teacher Command Center</h1>
-            <p className="mt-2 text-sm text-slate-400">
-              <span className="mr-2 rounded bg-amber-400/15 px-2 py-0.5 text-xs font-medium text-amber-300">
-                Synthetic demo data
-              </span>
-              Cohort clustering and interventions land in Phase 5.
-            </p>
-          </section>
+          <TeacherCenter onOpenStudent={openStudent} />
         )}
       </main>
     </div>
