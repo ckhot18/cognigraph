@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import StudentHub from './student/StudentHub.jsx';
 import TeacherCenter from './teacher/TeacherCenter.jsx';
+import ErrorBoundary from './ErrorBoundary.jsx';
 
 // App shell: mode switcher between Student Hub (Phase 4) and Teacher Center (Phase 5).
 const MODES = [
@@ -19,6 +20,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:rounded focus:bg-indigo-500 focus:px-3 focus:py-1 focus:text-white">
+        Skip to content
+      </a>
       <header className="border-b border-slate-800">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-4">
           <div>
@@ -48,11 +52,15 @@ export default function App() {
           </nav>
         </div>
       </header>
-      <main className="mx-auto max-w-6xl px-4 py-8">
+      <main id="main" className="mx-auto max-w-6xl px-4 py-8">
         {mode === 'student' ? (
-          <StudentHub key={studentPreset} initialPresetId={studentPreset} onExternalPreset={setStudentPreset} />
+          <ErrorBoundary name="the Student Hub">
+            <StudentHub key={studentPreset} initialPresetId={studentPreset} onExternalPreset={setStudentPreset} />
+          </ErrorBoundary>
         ) : (
-          <TeacherCenter onOpenStudent={openStudent} />
+          <ErrorBoundary name="the Teacher Center">
+            <TeacherCenter onOpenStudent={openStudent} />
+          </ErrorBoundary>
         )}
       </main>
     </div>
